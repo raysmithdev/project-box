@@ -1,26 +1,32 @@
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
-// import ProjectBoxContext from './ProjectBoxContext';
-import './App.css';
+import React, { Component } from "react";
+import { Route, Switch } from "react-router-dom";
+import Nav from "./components/Navigation/Nav";
+import NotFound from "./components/NotFound/NotFound";
+import ProjectList from "./components/ProjectList/ProjectList";
+import "./App.css";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       projects: [],
     };
   }
 
   render() {
-    // const contextValue = {
-    //   projects: this.state.projects,
-    // };
-
     return (
-      <div className="App">
-      
+      <div className="app">
+        <header className="app-header">
+          <Nav />
+        </header>
+        <main className="app-main">
+          <Switch>
+            <Route exact path={"/"} component={ProjectList} />
+            <Route component={NotFound} />
+          </Switch>
+        </main>
       </div>
-    )
+    );
   }
 }
 
