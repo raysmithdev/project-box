@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Nav from "./components/Navigation/Nav";
-import NotFound from "./components/NotFound/NotFound";
-import ProjectList from "./components/ProjectList/ProjectList";
-import Login from "./components/Login/Login";
+import NotFound from "./routes/NotFound/NotFound";
+import LandingPage from "./routes/LandingPage/LandingPage";
+import Login from "./routes/Login/Login";
 import "./App.css";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+      username: "",
       projects: [],
     };
   }
@@ -22,7 +23,7 @@ class App extends Component {
         </header>
         <main className="app-main">
           <Switch>
-            <Route exact path={"/"} component={ProjectList} />
+            <Route exact path={"/"} component={LandingPage} />
             <Route path={"/login"} component={Login} />
             <Route component={NotFound} />
           </Switch>
