@@ -1,35 +1,27 @@
 import React, { Component } from "react";
 import "./Login.css";
+import ProjectContext from "../../Context/ProjectContext";
 
 class Login extends Component {
-  static defaultProps = {
-    onLoginSuccess: () => {}
-  }
 
-  handleSubmit = e => {
-    e.preventDefault()
-    const { username, password } = e.target
-    const { location, history } = this.props
-    const destination = (location.state || {})
-    .from || '/'
-    history.push(destination)
-  }
+  static contextType = ProjectContext
 
   render() {
     return (
       <div className="form-container">
-        <form className="login-form" onSubmit={this.handleSubmit}>
+        <form className="login-form" onSubmit={e => this.context.handleLogin(e)}>
           <div className="form-section">
-            <label for="username">Username</label>
+            <label htmlFor="username">Username</label>
             <input
               type="text"
               name="username"
               placeholder="knitpearl77"
+              onChange={this.context.handleUsernameChange}
               required
             />
           </div>
           <div className="form-section">
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input type="password" name="password" />
           </div>
           <div className="form-section">

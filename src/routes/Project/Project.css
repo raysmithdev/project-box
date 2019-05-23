@@ -1,0 +1,22 @@
+.project-container {
+    padding: 50px 0;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-header {
+    text-align: center;
+    color: darkmagenta;
+    font-size: 4.5vw;
+}
+
+.project-container > p,
+.project-container > ol,
+.project-container > ul,
+.project-header {
+    padding: 8px;
+    font-weight: 300;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}

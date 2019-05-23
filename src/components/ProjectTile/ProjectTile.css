@@ -1,0 +1,39 @@
+.tile {
+    background: none;
+    display: flex;
+    flex-direction: column;
+    border: 0;
+    border-radius: 10px;
+    margin: 0px 20px 40px 0;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.tile:hover {
+    cursor: pointer;
+}
+
+.tile-title {
+    padding: 10px;
+    flex: 1;
+    max-width: 275px;
+    background: #333;
+    color: whitesmoke;
+    margin: 0;
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+    font-size: 1em;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.tile-img {
+    background: darkviolet;
+    height: 250px;
+    width: 275px;
+    border-radius: 10px 10px 0 0;
+    background-size: cover;
+    text-align: center;
+    margin: 0;
+    /* background-position: 50% 50%; */
+}

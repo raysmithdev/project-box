@@ -1,0 +1,68 @@
+.create-project-form {
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#add-input-button {
+    margin: 5px;
+}
+
+#columns {
+    display: grid;
+    grid-template-columns: 90% 10%;
+}
+
+.input-container {
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+.input-container:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.input-container > label {
+    padding: 8px;
+    font-weight: 300;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    max-width: 220px;
+}
+
+.input-section input,
+#columns input {
+    padding: 15px;
+    border: none;
+}
+
+#columns button {
+    margin-left: auto;
+    padding: 8px 16px;
+    border: none;
+    background: #333;
+    color: #f2f2f2;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    border-radius: 2px;
+}
+
+.input-container > input, 
+.input-container > button,
+#columns > input,
+#columns > button {
+    margin: 5px;
+}
+
+#button-section {
+    flex-direction: column;
+}
+
+#button-section > button {
+    margin: 5px 0 0 auto;
+}
+
+.form-section > input {
+    margin: 5px;
+    display: block;
+}

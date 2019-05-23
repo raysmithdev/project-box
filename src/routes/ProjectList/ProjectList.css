@@ -1,0 +1,16 @@
+.list-header {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 2.0vw;
+    margin-bottom: 100px;
+}
+
+.list-projecttiles {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1200px;
+}

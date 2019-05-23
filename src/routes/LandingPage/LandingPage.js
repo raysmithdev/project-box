@@ -40,9 +40,9 @@ function LandingPage() {
         <header className="large-text">
           <h3>Join</h3>
         </header>
-        <form class="signup-form">
+        <form className="signup-form">
           <div>
-            <label for="username">Username</label>
+            <label htmlFor="username">Username</label>
             <input
               placeholder="knitpearl77"
               type="text"
@@ -51,7 +51,7 @@ function LandingPage() {
             />
           </div>
           <div>
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input type="password" name="password" id="password" />
           </div>
           <div>

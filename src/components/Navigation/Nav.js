@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Nav.css";
 
 function Navigation() {
@@ -10,6 +10,8 @@ function Navigation() {
           Project Box
         </NavLink>
       </h1>
+      <NavLink to="/home" className="link">Demo</NavLink>
+      <NavLink to="/new" className="link">New Project</NavLink>
       <NavLink to="/login" className="link">Log In</NavLink>
     </nav>
   );
