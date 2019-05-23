@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./New.css";
+import ProjectContext from "../../Context/ProjectContext";
 
 class New extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -9,9 +11,11 @@ class New extends Component {
       steps: [{ name: "" }],
       title: "",
       summary: "",
-      username: this.props.store.currentUser,
+      id: '',
     };
   }
+  
+  static contextType = ProjectContext;
 
   handleTitleChange = e => {
     this.setState({ title: e.target.value });
@@ -66,14 +70,14 @@ class New extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const newProject = {
+      id: Math.random()*1000,
       title: this.state.title,
+      img: 'https://images.pexels.com/photos/70083/frog-macro-amphibian-green-70083.jpeg?cs=srgb&dl=amphibian-color-colour-70083.jpg&fm=jpg',
       summary: this.state.summary,
       materials: this.state.materials,
       steps: this.state.steps,
-      username: this.state.username,
     };
-    alert(`New project ${newProject.title} created`);
-    console.log(newProject);
+    this.context.handleSubmitNewProject(newProject);
   };
 
   render() {

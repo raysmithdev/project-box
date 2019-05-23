@@ -6,6 +6,7 @@ const ProjectContext = React.createContext({
     loginUsername: '',
     handleLogin: () => {},
     handleUsernameChange: () => {},
+    handleSubmitNewProject: () => {},
 })
 
 export default ProjectContext;

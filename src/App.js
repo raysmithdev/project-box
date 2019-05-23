@@ -6,8 +6,8 @@ import LandingPage from "./routes/LandingPage/LandingPage";
 import Login from "./routes/Login/Login";
 import ProjectList from "./routes/ProjectList/ProjectList";
 import Project from "./routes/Project/Project";
-import "./App.css";
 import New from "./routes/New/New";
+import "./App.css";
 import ProjectContext from "./Context/ProjectContext";
 
 class App extends Component {
@@ -121,6 +121,11 @@ class App extends Component {
     this.setState({ loginUsername: e.target.value });
   };
 
+  handleSubmitNewProject = newProject => {
+    this.setState({ projects: this.state.projects.concat(newProject)})
+    console.log(this.state.projects)
+    this.props.history.push('/home')
+  }
   render() {
     const contextValue = {
       currentUser: this.state.currentUser,
@@ -128,6 +133,7 @@ class App extends Component {
       projects: this.state.projects,
       handleLogin: this.handleLogin,
       handleUsernameChange: this.handleUsernameChange,
+      handleSubmitNewProject: this.handleSubmitNewProject,
     };
     return (
       <div className="app">
@@ -140,7 +146,7 @@ class App extends Component {
               <Route exact path={"/"} component={LandingPage} />
               <Route path={"/login"} component={Login} />
               <Route path={"/home"} component={ProjectList} />
-              <Route path={"/new"} render={() => <New store={this.state} />} />
+              <Route path={"/new"} component={New} />
               <Route path={"/project/:id"} component={Project} />
               <Route component={NotFound} />
             </Switch>

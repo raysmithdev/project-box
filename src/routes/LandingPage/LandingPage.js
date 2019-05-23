@@ -9,6 +9,7 @@ function LandingPage() {
           <h3>A Place For Projects</h3>
         </header>
         <p className="img">[placeholder for visual element]</p>
+        {/* <img src='https://images.pexels.com/photos/301703/pexels-photo-301703.jpeg?cs=srgb&dl=background-blank-craft-301703.jpg&fm=jpg' alt="craft tools on desk" className="img"/> */}
         <p className="text">
           Project Box helps you record how you made that thing! Like grandma's
           old recipe book, Project Box is a reliable reference that helps you
