@@ -1,8 +1,11 @@
-import React from 'react';
+import React from "react";
+import { shallow } from "enzyme";
+import toJson from "enzyme-to-json";
+import NotFound from './NotFound'
 
-function NotFound() {
-    return(
-        <p>Page Not Found</p>
-    )
-}
-export default NotFound;
+describe(`NotFound component`, () => {
+  it("renders without crashing", () => {
+    const wrapper = shallow(<NotFound />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+});

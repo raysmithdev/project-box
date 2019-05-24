@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation component renders without crashing 1`] = `
+<nav
+  role="navigation"
+>
+  <h1>
+    <NavLink
+      className="header link"
+      to="/"
+    >
+      Project Box
+    </NavLink>
+  </h1>
+  <NavLink
+    className="link"
+    to="/home"
+  >
+    Demo
+  </NavLink>
+  <NavLink
+    className="link"
+    to="/new"
+  >
+    New Project
+  </NavLink>
+  <NavLink
+    className="link"
+    to="/login"
+  >
+    Log In
+  </NavLink>
+</nav>
+`;

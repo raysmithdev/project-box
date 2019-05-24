@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`New component renders without crashing 1`] = `
+<section
+  className="form-container"
+>
+  <form
+    className="create-project-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="input-container"
+    >
+      <label
+        htmlFor="title"
+      >
+        Project title
+      </label>
+      <input
+        name="title"
+        onChange={[Function]}
+        placeholder="knit sweater"
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="input-container"
+    >
+      <label
+        htmlFor="summary"
+      >
+        Summary
+      </label>
+      <textarea
+        name="summary"
+        onChange={[Function]}
+        rows="15"
+        value=""
+      />
+    </div>
+    <div
+      className="input-container"
+    >
+      <label
+        htmlFor="material"
+      >
+        Materials
+      </label>
+      <div
+        id="columns"
+      >
+        <input
+          name="material"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+        <button
+          onClick={[Function]}
+          type="button"
+        >
+           
+          -
+           
+        </button>
+      </div>
+    </div>
+    <div
+      className="form-section button-section"
+    >
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        + Material
+      </button>
+    </div>
+    <div
+      className="input-container"
+    >
+      <label
+        htmlFor="step"
+      >
+        Steps
+      </label>
+      <div
+        id="columns"
+      >
+        <input
+          name="step"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+        <button
+          onClick={[Function]}
+          type="button"
+        >
+           
+          -
+           
+        </button>
+      </div>
+    </div>
+    <div
+      className="form-section button-section"
+    >
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        + Step
+      </button>
+    </div>
+    <div
+      className="form-section"
+      id="button-section"
+    >
+      <button
+        type="submit"
+      >
+        Submit
+      </button>
+      <button
+        type="reset"
+      >
+        Reset
+      </button>
+    </div>
+  </form>
+</section>
+`;
