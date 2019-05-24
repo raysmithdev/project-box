@@ -11,7 +11,7 @@ function Navigation() {
         </NavLink>
       </h1>
       <NavLink to="/home" className="link">Demo</NavLink>
-      <NavLink to="/new" className="link">New Project</NavLink>
+      <NavLink to="/new" className="link">+Project</NavLink>
       <NavLink to="/login" className="link">Log In</NavLink>
     </nav>
   );
