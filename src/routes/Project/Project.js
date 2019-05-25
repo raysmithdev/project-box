@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 import ProjectContext from "../../Context/ProjectContext";
-import './Project.css'
+import "./Project.css";
 
 class Project extends Component {
   static defaultProps = {
@@ -17,32 +18,25 @@ class Project extends Component {
       <Fragment>
         <section className="project-container">
           <h2 className="project-header">{project.title}</h2>
-          <p className="project-summary">
-            Summary: </p><p>{project.summary}
-          </p>
+          <p className="project-summary">Summary: </p>
+          <p>{project.summary}</p>
           <p>Materials Needed:</p>
           <ul className="materials-list">
             {project.materials.map(material => {
-              return <li>{material.name}</li>
+              return <li>{material.name}</li>;
             })}
           </ul>
           <p>Steps:</p>
           <ol className="steps-list">
-          {project.steps.map(step => {
-            return <li>{step.name}</li>
-          })}
+            {project.steps.map(step => {
+              return <li>{step.name}</li>;
+            })}
           </ol>
-          {/* <Link to="/home">
-            <button
-              className="deleteProjectButton"
-              onClick={() =>
-                this.context.deleteProjectRequest(project.id, this.context.deleteProject)
-              }
-            >
-              {" "}
-              Delete Project
-            </button>
-          </Link> */}
+          <div id="button-section">
+            <Link to={`/edit/${project.id}`} >
+              <button className="button">Edit Project</button>
+            </Link>
+          </div>
         </section>
       </Fragment>
     );

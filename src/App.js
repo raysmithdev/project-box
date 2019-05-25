@@ -7,6 +7,7 @@ import Login from "./routes/Login/Login";
 import ProjectList from "./routes/ProjectList/ProjectList";
 import Project from "./routes/Project/Project";
 import New from "./routes/New/New";
+import Edit from './routes/Edit/Edit'
 import "./App.css";
 import ProjectContext from "./Context/ProjectContext";
 
@@ -123,9 +124,9 @@ class App extends Component {
 
   handleSubmitNewProject = newProject => {
     this.setState({ projects: this.state.projects.concat(newProject)})
-    console.log(this.state.projects)
     this.props.history.push('/home')
   }
+  
   render() {
     const contextValue = {
       currentUser: this.state.currentUser,
@@ -148,6 +149,7 @@ class App extends Component {
               <Route path={"/home"} component={ProjectList} />
               <Route path={"/new"} component={New} />
               <Route path={"/project/:id"} component={Project} />
+              <Route path={"/edit/:id"} component={Edit} />
               <Route component={NotFound} />
             </Switch>
           </ProjectContext.Provider>
