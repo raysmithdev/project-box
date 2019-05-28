@@ -6,15 +6,25 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      materials: [{ name: "" }],
-      steps: [{ name: "" }],
-      title: "",
-      summary: "",
-      id: "",
+      project: {
+        materials: [{ name: "" }],
+        steps: [{ name: "" }],
+        title: "",
+        summary: "",
+        id: "",
+      },
     };
   }
 
   static contextType = ProjectContext;
+
+  componentDidMount() {
+    if (this.props.params.edit === "Y") {
+      this.setState({
+        project: this.props.params.project.project,
+      });
+    }
+  }
 
   handleTitleChange = e => {
     this.setState({ title: e.target.value });
@@ -90,11 +100,7 @@ class Form extends Component {
               type="text"
               name="title"
               placeholder="knit sweater"
-              value={
-                this.props.params.edit === 'Y'
-                  ? this.props.params.project.project.title
-                  : this.state.title
-              }
+              value={this.state.project.title}
               onChange={this.handleTitleChange}
               required
             />
@@ -104,56 +110,29 @@ class Form extends Component {
             <textarea
               name="summary"
               rows="15"
-              value={
-                this.props.params.edit === 'Y'
-                  ? this.props.params.project.project.summary
-                  : this.state.summary
-              }
+              value={this.state.project.summary}
               onChange={this.handleSummaryChange}
             />
           </div>
           <div className="input-container">
             <label htmlFor="material">Materials</label>
-            {this.props.params.edit === 'Y'
-              ? this.props.params.project.project.materials.map(
-                  (material, index) => (
-                    <div id="columns">
-                      <input
-                        type="text"
-                        name="material"
-                        value={
-                          this.props.params.project.project.materials[index]
-                            .name
-                        }
-                        onChange={this.handleMaterialNameChange(index)}
-                      />
-                      <button
-                        type="button"
-                        onClick={this.handleRemoveMaterial(index)}
-                      >
-                        {" "}
-                        -{" "}
-                      </button>
-                    </div>
-                  )
-                )
-              : this.state.materials.map((material, index) => (
-                  <div id="columns">
-                    <input
-                      type="text"
-                      name="material"
-                      value={this.state.material}
-                      onChange={this.handleMaterialNameChange(index)}
-                    />
-                    <button
-                      type="button"
-                      onClick={this.handleRemoveMaterial(index)}
-                    >
-                      {" "}
-                      -{" "}
-                    </button>
-                  </div>
-                ))}
+            {this.state.project.materials.map((material, index) => (
+              <div id="columns">
+                <input
+                  type="text"
+                  name="material"
+                  value={material.name}
+                  onChange={this.handleMaterialNameChange(index)}
+                />
+                <button
+                  type="button"
+                  onClick={this.handleRemoveMaterial(index)}
+                >
+                  {" "}
+                  -{" "}
+                </button>
+              </div>
+            ))}
           </div>
           <div className="form-section button-section">
             <button type="button" onClick={this.handleAddMaterial}>
@@ -163,43 +142,20 @@ class Form extends Component {
 
           <div className="input-container">
             <label htmlFor="step">Steps</label>
-            {this.props.params.edit === 'Y'
-              ? this.props.params.project.project.steps.map((step, index) => (
-                  <div id="columns">
-                    <input
-                      type="text"
-                      name="step"
-                      value={
-                        this.props.params.project.project.steps[index].name
-                      }
-                      onChange={this.handleStepNameChange(index)}
-                    />
-                    <button
-                      type="button"
-                      onClick={this.handleRemoveStep(index)}
-                    >
-                      {" "}
-                      -{" "}
-                    </button>
-                  </div>
-                ))
-              : this.state.steps.map((step, index) => (
-                  <div id="columns">
-                    <input
-                      type="text"
-                      name="step"
-                      value={step.name}
-                      onChange={this.handleStepNameChange(index)}
-                    />
-                    <button
-                      type="button"
-                      onClick={this.handleRemoveStep(index)}
-                    >
-                      {" "}
-                      -{" "}
-                    </button>
-                  </div>
-                ))}
+            {this.state.project.steps.map((step, index) => (
+              <div id="columns">
+                <input
+                  type="text"
+                  name="step"
+                  value={step.name}
+                  onChange={this.handleStepNameChange(index)}
+                />
+                <button type="button" onClick={this.handleRemoveStep(index)}>
+                  {" "}
+                  -{" "}
+                </button>
+              </div>
+            ))}
           </div>
           <div className="form-section button-section">
             <button type="button" onClick={this.handleAddStep}>

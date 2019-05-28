@@ -53,3 +53,7 @@ body {
     letter-spacing: .09em;
     border-radius: 2px;
 }
+
+.error {
+    color: red;
+}
