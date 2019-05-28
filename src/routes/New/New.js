@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Form from '../../../src/components/Form/Form'
+import Form from '../../components/ProjectForm/ProjectForm'
 
 function New() {
   return(

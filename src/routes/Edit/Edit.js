@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react'
 import ProjectContext from '../../Context/ProjectContext'
-import Form from '../../components/Form/Form'
+import Form from '../../components/ProjectForm/ProjectForm'
 
 class Edit extends Component {
 
