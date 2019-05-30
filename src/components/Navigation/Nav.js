@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import TokenService from "../../services/token-service";
 import { NavLink } from "react-router-dom";
 import "./Nav.css";
+import ProjectContext from "../../Context/ProjectContext";
 
 class Navigation extends Component {
+  static contextType = ProjectContext;
   handleLogoutClick = () => {
+    this.context.setCurrentUser("");
     TokenService.clearAuthToken();
   };
 

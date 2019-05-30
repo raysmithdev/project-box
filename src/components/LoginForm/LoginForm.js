@@ -8,16 +8,9 @@ class LoginForm extends Component {
     onLoginSuccess: () => {},
   };
 
-  static ContextType = ProjectContext;
+  static contextType = ProjectContext;
 
   state = { error: null };
-
-  handleCurrentUser(username) {
-    console.log(username);
-    console.log(this.context);
-    this.context.setCurrentUser(username);
-    console.log(this.context.currentUser);
-  }
 
   handleSubmitJwtAuth = e => {
     e.preventDefault();
@@ -29,9 +22,7 @@ class LoginForm extends Component {
       password: password.value,
     })
       .then(res => {
-        this.handleCurrentUser(username.value);
-      })
-      .then(res => {
+        this.context.setCurrentUser(username.value);
         username.value = "";
         password.value = "";
         TokenService.saveAuthToken(res.authToken);
