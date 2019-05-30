@@ -16,7 +16,6 @@ class ProjectList extends React.Component {
 
   renderProjects() {
     const { projectList = [] } = this.context;
-    console.log(projectList);
     return projectList.map(project => (
       <ProjectTile key={project.id} project={project} />
     ));
