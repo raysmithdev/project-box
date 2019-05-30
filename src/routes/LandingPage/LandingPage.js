@@ -11,7 +11,6 @@ class LandingPage extends Component {
 
   handleRegistrationSuccess = user => {
     const { history } = this.props;
-    console.log('registrationsuccess', user)
     history.push("/login");
   };
 
