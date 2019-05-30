@@ -1,13 +1,23 @@
 import React, { Component, Fragment } from "react";
 import TokenService from "../../services/token-service";
 import AuthApiService from "../../services/auth-api-service";
+import ProjectContext from "../../Context/ProjectContext";
 
 class LoginForm extends Component {
   static defaultProps = {
     onLoginSuccess: () => {},
   };
 
+  static ContextType = ProjectContext;
+
   state = { error: null };
+
+  handleCurrentUser(username) {
+    console.log(username);
+    console.log(this.context);
+    this.context.setCurrentUser(username);
+    console.log(this.context.currentUser);
+  }
 
   handleSubmitJwtAuth = e => {
     e.preventDefault();
@@ -19,11 +29,13 @@ class LoginForm extends Component {
       password: password.value,
     })
       .then(res => {
+        this.handleCurrentUser(username.value);
+      })
+      .then(res => {
         username.value = "";
         password.value = "";
         TokenService.saveAuthToken(res.authToken);
         this.props.onLoginSuccess();
-        console.log("here");
       })
       .catch(res => {
         this.setState({ error: res.error });

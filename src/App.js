@@ -7,7 +7,7 @@ import Login from "./routes/Login/Login";
 import ProjectList from "./routes/ProjectList/ProjectList";
 import Project from "./routes/Project/Project";
 import New from "./routes/New/New";
-import Edit from './routes/Edit/Edit'
+import Edit from "./routes/Edit/Edit";
 import "./App.css";
 import ProjectContext from "./Context/ProjectContext";
 
@@ -123,10 +123,15 @@ class App extends Component {
   };
 
   handleSubmitNewProject = newProject => {
-    this.setState({ projects: this.state.projects.concat(newProject)})
-    this.props.history.push('/home')
-  }
-  
+    this.setState({ projects: this.state.projects.concat(newProject) });
+    this.props.history.push("/home");
+  };
+
+  setCurrentUser = username => {
+    console.log('f')
+    this.setState({ currentUser: username });
+  };
+
   render() {
     const contextValue = {
       currentUser: this.state.currentUser,
@@ -135,7 +140,9 @@ class App extends Component {
       handleLogin: this.handleLogin,
       handleUsernameChange: this.handleUsernameChange,
       handleSubmitNewProject: this.handleSubmitNewProject,
+      setCurrentUser: this.setCurrentUser,
     };
+
     return (
       <div className="app">
         <header className="app-header">
