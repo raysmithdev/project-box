@@ -4,12 +4,13 @@ import Nav from "./components/Navigation/Nav";
 import NotFound from "./routes/NotFound/NotFound";
 import LandingPage from "./routes/LandingPage/LandingPage";
 import Login from "./routes/Login/Login";
-import ProjectList from "./routes/ProjectList/ProjectList";
-import Project from "./routes/Project/Project";
+import Dashboard from "./routes/Dashboard/Dashboard";
+import ViewProject from "./routes/ViewProject/ViewProject";
 import New from "./routes/New/New";
 import Edit from "./routes/Edit/Edit";
 import "./App.css";
 import ProjectContext from "./Context/ProjectContext";
+import ProjectsApiService from "./services/project-api-service";
 
 class App extends Component {
   static defaultProps = {
@@ -32,16 +33,20 @@ class App extends Component {
   handleLogin = e => {
     e.preventDefault();
     this.setState({ currentUser: this.state.loginUsername });
-    this.props.history.push("/home");
+    this.props.history.push("/dashboard");
   };
 
   handleUsernameChange = e => {
     this.setState({ loginUsername: e.target.value });
   };
 
-  handleSubmitNewProject = newProject => {
-    this.setState({ projects: this.state.projects.concat(newProject) });
-    this.props.history.push("/home");
+  handleSubmitNewProject = project => {
+    ProjectsApiService.postProject(project);
+    this.props.history.push("/dashboard");
+  };
+
+  editProject = project => {
+    this.props.history.push("/dashboard");
   };
 
   setCurrentUser = username => {
@@ -77,6 +82,7 @@ class App extends Component {
       handleLogin: this.handleLogin,
       handleUsernameChange: this.handleUsernameChange,
       handleSubmitNewProject: this.handleSubmitNewProject,
+      editProject: this.editProject,
       setCurrentUser: this.setCurrentUser,
       setError: this.setError,
       clearError: this.clearError,
@@ -96,9 +102,9 @@ class App extends Component {
             <Switch>
               <Route exact path={"/"} component={LandingPage} />
               <Route path={"/login"} component={Login} />
-              <Route path={"/home"} component={ProjectList} />
+              <Route path={"/dashboard"} component={Dashboard} />
               <Route path={"/new"} component={New} />
-              <Route path={"/project/:id"} component={Project} />
+              <Route path={"/project/:id"} component={ViewProject} />
               <Route path={"/edit/:id"} component={Edit} />
               <Route component={NotFound} />
             </Switch>

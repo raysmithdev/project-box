@@ -1,10 +1,16 @@
 import React from "react";
 import ProjectTile from "../../components/ProjectTile/ProjectTile";
-import "./ProjectList.css";
+import "./Dashboard.css";
 import ProjectContext from "../../Context/ProjectContext";
 import ProjectsApiService from "../../services/project-api-service";
 
-class ProjectList extends React.Component {
+class Dashboard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isChecked: false,
+    };
+  }
   static contextType = ProjectContext;
 
   componentDidMount() {
@@ -14,11 +20,23 @@ class ProjectList extends React.Component {
       .catch(this.context.setError);
   }
 
+  handleSwitch = () => {
+    this.setState({
+      isChecked: !this.state.isChecked,
+    });
+  };
+
   renderProjects() {
     const { projectList = [] } = this.context;
-    return projectList.map(project => (
-      <ProjectTile key={project.id} project={project} />
-    ));
+    if (this.state.isChecked) {
+      return projectList
+        .filter(project => project.user_id == this.context.currentUser)
+        .map(project => <ProjectTile key={project.id} project={project} />);
+    } else {
+      return projectList.map(project => (
+        <ProjectTile key={project.id} project={project} />
+      ));
+    }
   }
 
   render() {
@@ -32,6 +50,20 @@ class ProjectList extends React.Component {
     return (
       <section className="project-list">
         <header className="list-header">{greeting}</header>
+        {this.context.currentUser !== "" ? (
+          <label className="switch">
+            <input
+              className="switch-input"
+              type="checkbox"
+              onChange={this.handleSwitch}
+            />
+            <span className="switch-label" data-on="Mine" data-off="All" />
+            <span className="switch-handle" />
+          </label>
+        ) : (
+          <p>viewing all projects</p>
+        )}
+
         <div className="list-projecttiles">
           {error ? (
             <p className="error">Sorry, there was an error</p>
@@ -44,4 +76,4 @@ class ProjectList extends React.Component {
   }
 }
 
-export default ProjectList;
+export default Dashboard;

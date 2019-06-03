@@ -6,13 +6,11 @@ class ProjectForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      project: {
-        materials: [{ name: "" }],
-        steps: [{ name: "" }],
-        title: "",
-        summary: "",
-        id: "",
-      },
+      materials: [""],
+      steps: [" "],
+      title: "",
+      summary: "",
+      id: "",
     };
   }
 
@@ -28,6 +26,7 @@ class ProjectForm extends Component {
 
   handleTitleChange = e => {
     this.setState({ title: e.target.value });
+    console.log(this.state.title);
   };
 
   handleSummaryChange = e => {
@@ -35,30 +34,32 @@ class ProjectForm extends Component {
   };
 
   handleMaterialNameChange = index => e => {
-    const newMaterials = this.state.materials.map((material, mindex) => {
-      if (index !== mindex) return material;
-      return { ...material, name: e.target.value };
-    });
+    const newMaterials = this.state.materials.map(
+      (material, mindex) => {
+        if (index !== mindex) return material;
+        return e.target.value;
+      }
+    );
     this.setState({ materials: newMaterials });
   };
 
   handleStepNameChange = index => e => {
     const newSteps = this.state.steps.map((step, sindex) => {
       if (index !== sindex) return step;
-      return { ...step, name: e.target.value };
+      return  e.target.value;
     });
     this.setState({ steps: newSteps });
   };
 
   handleAddMaterial = () => {
     this.setState({
-      materials: this.state.materials.concat([{ name: "" }]),
+      materials: this.state.materials.push(" "),
     });
   };
 
   handleAddStep = () => {
     this.setState({
-      steps: this.state.steps.concat([{ name: "" }]),
+      steps: this.state.steps.push(""),
     });
   };
 
@@ -72,22 +73,26 @@ class ProjectForm extends Component {
 
   handleRemoveStep = index => () => {
     this.setState({
-      steps: this.state.steps.filter((step, sindex) => index !== sindex),
+      steps: this.state.steps.filter(
+        (step, sindex) => index !== sindex
+      ),
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    const newProject = {
-      id: Math.random() * 1000,
+    const project = {
       title: this.state.title,
-      img:
-        "https://images.pexels.com/photos/70083/frog-macro-amphibian-green-70083.jpeg?cs=srgb&dl=amphibian-color-colour-70083.jpg&fm=jpg",
       summary: this.state.summary,
+      user_id: this.context.currentUser,
       materials: this.state.materials,
       steps: this.state.steps,
     };
-    this.context.handleSubmitNewProject(newProject);
+    if (this.props.params.edit === "Y") {
+      this.context.editProject(project);
+    } else {
+      this.context.handleSubmitNewProject(project);
+    }
   };
 
   render() {
@@ -100,7 +105,7 @@ class ProjectForm extends Component {
               type="text"
               name="title"
               placeholder="knit sweater"
-              value={this.state.project.title}
+              value={this.state.title}
               onChange={this.handleTitleChange}
               required
             />
@@ -110,13 +115,13 @@ class ProjectForm extends Component {
             <textarea
               name="summary"
               rows="15"
-              value={this.state.project.summary}
+              value={this.state.summary}
               onChange={this.handleSummaryChange}
             />
           </div>
           <div className="input-container">
             <label htmlFor="material">Materials</label>
-            {this.state.project.materials.map((material, index) => (
+            {this.state.materials.map((material, index) => (
               <div id="columns">
                 <input
                   type="text"
@@ -142,12 +147,12 @@ class ProjectForm extends Component {
 
           <div className="input-container">
             <label htmlFor="step">Steps</label>
-            {this.state.project.steps.map((step, index) => (
+            {this.state.steps.map((step, index) => (
               <div id="columns">
                 <input
                   type="text"
                   name="step"
-                  value={step.name}
+                  defaultValue={step.name}
                   onChange={this.handleStepNameChange(index)}
                 />
                 <button type="button" onClick={this.handleRemoveStep(index)}>

@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import ProjectContext from "../../Context/ProjectContext";
-import "./Project.css";
+import "./ViewProject.css";
 
-class Project extends Component {
+class ViewProject extends Component {
   static defaultProps = {
     match: { params: {} },
   };
@@ -44,4 +44,4 @@ class Project extends Component {
   }
 }
 
-export default Project;
+export default ViewProject;

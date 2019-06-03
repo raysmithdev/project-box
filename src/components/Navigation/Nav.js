@@ -34,7 +34,7 @@ class Navigation extends Component {
             Project Box
           </NavLink>
         </h1>
-        <NavLink to="/home" className="link">
+        <NavLink to="/dashboard" className="link">
           Demo
         </NavLink>
         <NavLink to="/new" className="link">
