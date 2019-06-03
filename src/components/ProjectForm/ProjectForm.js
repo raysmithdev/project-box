@@ -7,7 +7,7 @@ class ProjectForm extends Component {
     super(props);
     this.state = {
       materials: [""],
-      steps: [" "],
+      steps: [""],
       title: "",
       summary: "",
       id: "",
@@ -34,32 +34,30 @@ class ProjectForm extends Component {
   };
 
   handleMaterialNameChange = index => e => {
-    const newMaterials = this.state.materials.map(
-      (material, mindex) => {
-        if (index !== mindex) return material;
-        return e.target.value;
-      }
-    );
+    const newMaterials = this.state.materials.map((material, mindex) => {
+      if (index !== mindex) return material;
+      return e.target.value;
+    });
     this.setState({ materials: newMaterials });
   };
 
   handleStepNameChange = index => e => {
     const newSteps = this.state.steps.map((step, sindex) => {
       if (index !== sindex) return step;
-      return  e.target.value;
+      return e.target.value;
     });
     this.setState({ steps: newSteps });
   };
 
   handleAddMaterial = () => {
     this.setState({
-      materials: this.state.materials.push(" "),
+      materials: this.state.materials.concat(""),
     });
   };
 
   handleAddStep = () => {
     this.setState({
-      steps: this.state.steps.push(""),
+      steps: this.state.steps.concat(''),
     });
   };
 
@@ -73,9 +71,7 @@ class ProjectForm extends Component {
 
   handleRemoveStep = index => () => {
     this.setState({
-      steps: this.state.steps.filter(
-        (step, sindex) => index !== sindex
-      ),
+      steps: this.state.steps.filter((step, sindex) => index !== sindex),
     });
   };
 
