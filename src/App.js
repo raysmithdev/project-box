@@ -47,6 +47,7 @@ class App extends Component {
   };
 
   editProject = project => {
+    ProjectsApiService.editProject(project);
     this.props.history.push("/dashboard");
   };
 
@@ -58,6 +59,10 @@ class App extends Component {
     this.setState({ currentUserId: userId})
   }
 
+  setProjectList = projectList => {
+    this.setState({ projectList });
+  };
+  
   setProject = project => {
     this.setState({ project });
   };
@@ -75,9 +80,6 @@ class App extends Component {
     this.setState({ error: null });
   };
 
-  setProjectList = projectList => {
-    this.setState({ projectList });
-  };
   render() {
     const contextValue = {
       currentUser: this.state.currentUser,

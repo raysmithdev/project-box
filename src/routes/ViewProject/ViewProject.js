@@ -14,7 +14,6 @@ class ViewProject extends Component {
     const project = this.context.projectList.find(
       project => project.id === Number(this.props.match.params.id)
     );
-    console.log(project);
     return (
       <Fragment>
         <section className="project-container">
@@ -24,20 +23,22 @@ class ViewProject extends Component {
           <p>Materials Needed:</p>
           <ul className="materials-list">
             {project.materials.map((material, index) => {
-              return <li key={index}>{material.name}</li>;
+              return <li key={index}>{material}</li>;
             })}
           </ul>
           <p>Steps:</p>
           <ol className="steps-list">
             {project.steps.map((step, index) => {
-              return <li key={index}>{step.name}</li>;
+              return <li key={index}>{step}</li>;
             })}
           </ol>
+          {this.context.currentUserId === project.user_id ? 
           <div id="button-section">
             <Link to={`/edit/${project.id}`}>
               <button className="button">Edit Project</button>
             </Link>
-          </div>
+          </div> : <Fragment></Fragment>
+          }
         </section>
       </Fragment>
     );

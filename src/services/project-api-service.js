@@ -26,6 +26,15 @@ const ProjectsApiService = {
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
+  editProject(project) {
+    return fetch(`${config.API_ENDPOINT}/projects/${project.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(project),
+    }).then(res => (!res.ok ? e => Promise.reject(e) : {}));
+  },
 };
 
 export default ProjectsApiService;

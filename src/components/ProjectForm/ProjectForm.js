@@ -10,7 +10,7 @@ class ProjectForm extends Component {
       steps: [""],
       title: "",
       summary: "",
-      id: "",
+      id: '',
     };
   }
 
@@ -19,14 +19,17 @@ class ProjectForm extends Component {
   componentDidMount() {
     if (this.props.params.edit === "Y") {
       this.setState({
-        project: this.props.params.project.project,
+        title: this.props.params.project.title,
+        summary: this.props.params.project.summary,
+        id: this.props.params.project.id,
+        materials: this.props.params.project.materials,
+        steps: this.props.params.project.steps
       });
     }
   }
 
   handleTitleChange = e => {
     this.setState({ title: e.target.value });
-    console.log(this.state.title);
   };
 
   handleSummaryChange = e => {
@@ -83,6 +86,7 @@ class ProjectForm extends Component {
       user_id: this.context.currentUserId,
       materials: this.state.materials,
       steps: this.state.steps,
+      id: this.state.id
     };
     if (this.props.params.edit === "Y") {
       this.context.editProject(project);
@@ -122,7 +126,7 @@ class ProjectForm extends Component {
                 <input
                   type="text"
                   name="material"
-                  value={material.name}
+                  value={material}
                   onChange={this.handleMaterialNameChange(index)}
                 />
                 <button
@@ -148,7 +152,7 @@ class ProjectForm extends Component {
                 <input
                   type="text"
                   name="step"
-                  defaultValue={step.name}
+                  value={step}
                   onChange={this.handleStepNameChange(index)}
                 />
                 <button type="button" onClick={this.handleRemoveStep(index)}>

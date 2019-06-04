@@ -4,6 +4,7 @@ const ProjectContext = React.createContext({
   currentUser: "",
   currentUserId: '',
   project: "",
+  projectList: [],
   handleLogin: () => {},
   handleUsernameChange: () => {},
   handleSubmitNewProject: () => {},
