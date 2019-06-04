@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
     const { projectList = [] } = this.context;
     if (this.state.isChecked) {
       return projectList
-        .filter(project => project.user_id == this.context.currentUser)
+        .filter(project => project.user_id === this.context.currentUserId)
         .map(project => <ProjectTile key={project.id} project={project} />);
     } else {
       return projectList.map(project => (

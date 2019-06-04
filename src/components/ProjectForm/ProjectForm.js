@@ -57,7 +57,7 @@ class ProjectForm extends Component {
 
   handleAddStep = () => {
     this.setState({
-      steps: this.state.steps.concat(''),
+      steps: this.state.steps.concat(""),
     });
   };
 
@@ -80,7 +80,7 @@ class ProjectForm extends Component {
     const project = {
       title: this.state.title,
       summary: this.state.summary,
-      user_id: this.context.currentUser,
+      user_id: this.context.currentUserId,
       materials: this.state.materials,
       steps: this.state.steps,
     };
@@ -118,7 +118,7 @@ class ProjectForm extends Component {
           <div className="input-container">
             <label htmlFor="material">Materials</label>
             {this.state.materials.map((material, index) => (
-              <div id="columns">
+              <div id="columns" key={index}>
                 <input
                   type="text"
                   name="material"
@@ -144,7 +144,7 @@ class ProjectForm extends Component {
           <div className="input-container">
             <label htmlFor="step">Steps</label>
             {this.state.steps.map((step, index) => (
-              <div id="columns">
+              <div id="columns" key={index}>
                 <input
                   type="text"
                   name="step"

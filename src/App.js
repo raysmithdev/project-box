@@ -23,6 +23,7 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: "",
+      currentUserId: "",
       loginUsername: "",
       projectList: [],
       error: null,
@@ -50,9 +51,12 @@ class App extends Component {
   };
 
   setCurrentUser = username => {
-    console.log("f");
     this.setState({ currentUser: username });
   };
+
+  setCurrentUserId = userId => {
+    this.setState({ currentUserId: userId})
+  }
 
   setProject = project => {
     this.setState({ project });
@@ -77,6 +81,7 @@ class App extends Component {
   render() {
     const contextValue = {
       currentUser: this.state.currentUser,
+      currentUserId: this.state.currentUserId,
       loginUsername: this.state.loginUsername,
       projects: this.state.projects,
       handleLogin: this.handleLogin,
@@ -84,6 +89,7 @@ class App extends Component {
       handleSubmitNewProject: this.handleSubmitNewProject,
       editProject: this.editProject,
       setCurrentUser: this.setCurrentUser,
+      setCurrentUserId: this.setCurrentUserId,
       setError: this.setError,
       clearError: this.clearError,
       setProject: this.setProject,
