@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import ProjectContext from "../../Context/ProjectContext";
+import ProjectsApiService from "../../services/project-api-service";
 import "./ViewProject.css";
 
 class ViewProject extends Component {
@@ -9,6 +10,7 @@ class ViewProject extends Component {
   };
 
   static contextType = ProjectContext;
+
 
   render() {
     const project = this.context.projectList.find(
@@ -32,13 +34,20 @@ class ViewProject extends Component {
               return <li key={index}>{step}</li>;
             })}
           </ol>
-          {this.context.currentUserId === project.user_id ? 
-          <div id="button-section">
-            <Link to={`/edit/${project.id}`}>
-              <button className="button">Edit Project</button>
-            </Link>
-          </div> : <Fragment></Fragment>
-          }
+          {this.context.currentUserId === project.user_id ? (
+            <div id="button-section">
+              <Link id="link" to={`/edit/${project.id}`}>
+                <button className="button">Edit Project</button>
+              </Link>
+              <button className="button" 
+              onClick={() => this.context.deleteProject(project.id)}
+              >
+                Delete Project
+              </button>
+            </div>
+          ) : (
+            <Fragment />
+          )}
         </section>
       </Fragment>
     );

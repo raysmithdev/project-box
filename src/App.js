@@ -62,7 +62,7 @@ class App extends Component {
   setProjectList = projectList => {
     this.setState({ projectList });
   };
-  
+
   setProject = project => {
     this.setState({ project });
   };
@@ -78,6 +78,11 @@ class App extends Component {
 
   clearError = () => {
     this.setState({ error: null });
+  };
+
+  deleteProject = projectId => {
+    ProjectsApiService.deleteProject(projectId);
+    this.props.history.push("/dashboard");
   };
 
   render() {
@@ -98,6 +103,7 @@ class App extends Component {
       clearProject: this.clearProject,
       setProjectList: this.setProjectList,
       projectList: this.state.projectList,
+      deleteProject: this.deleteProject,
     };
 
     return (

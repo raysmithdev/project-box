@@ -35,6 +35,22 @@ const ProjectsApiService = {
       body: JSON.stringify(project),
     }).then(res => (!res.ok ? e => Promise.reject(e) : {}));
   },
+  deleteProject(projectId) {
+    return fetch(`${config.API_ENDPOINT}/projects/${projectId}`, {
+      method: "DELETE",
+    })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(error => {
+            throw error;
+          });
+        }
+        // return res.json();
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  },
 };
 
 export default ProjectsApiService;
