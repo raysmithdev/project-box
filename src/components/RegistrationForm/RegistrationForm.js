@@ -24,6 +24,7 @@ class RegistrationForm extends Component {
       })
       .catch(res => {
         this.setState({ error: res.error });
+        console.log(this.state.error)
       });
   };
 
@@ -33,7 +34,7 @@ class RegistrationForm extends Component {
         className="signup-form"
         onSubmit={this.handleRegistrationFormSubmit}
       >
-      {this.state.error !== null ? <p className="error">{this.state.error.detail}</p> : ''}
+      {this.state.error !== null && this.state.error !== undefined ? <p className="error">{this.state.error.message}</p> : ''}
         <div>
           <label htmlFor="username">Username</label>
           <input
