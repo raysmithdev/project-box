@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ProjectTile from "../../components/ProjectTile/ProjectTile";
 import "./Dashboard.css";
 import ProjectContext from "../../Context/ProjectContext";
@@ -15,6 +15,12 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     this.context.clearError();
+    // ProjectsApiService.getProjects()
+    //   .then(this.context.setProjectList)
+    //   .catch(this.context.setError);
+  }
+
+  componentDidUpdate() {
     ProjectsApiService.getProjects()
       .then(this.context.setProjectList)
       .catch(this.context.setError);
@@ -61,7 +67,7 @@ class Dashboard extends React.Component {
             <span className="switch-handle" />
           </label>
         ) : (
-          <p>viewing all projects</p>
+          <Fragment />
         )}
 
         <div className="list-projecttiles">

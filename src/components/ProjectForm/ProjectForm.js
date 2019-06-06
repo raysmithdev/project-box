@@ -98,6 +98,7 @@ class ProjectForm extends Component {
   render() {
     return (
       <section className="form-container">
+      {this.context.currentUser === '' ? <p className="error">Please Log In</p> : {}}
         <form className="create-project-form" onSubmit={this.handleSubmit}>
           <div className="input-container">
             <label htmlFor="title">Project title</label>

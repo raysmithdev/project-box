@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import ProjectContext from "../../Context/ProjectContext";
-import ProjectsApiService from "../../services/project-api-service";
 import "./ViewProject.css";
 
 class ViewProject extends Component {

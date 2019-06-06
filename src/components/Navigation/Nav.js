@@ -35,12 +35,12 @@ class Navigation extends Component {
           </NavLink>
         </h1>
         <NavLink to="/dashboard" className="link">
-          Demo
+          Home
         </NavLink>
         <NavLink to="/new" className="link">
           +Project
         </NavLink>
-        {TokenService.hasAuthToken()
+        {TokenService.hasAuthToken() && this.context.currentUser !== ''
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
       </nav>
