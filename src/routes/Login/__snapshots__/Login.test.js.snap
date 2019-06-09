@@ -4,47 +4,8 @@ exports[`Login component renders without crashing 1`] = `
 <div
   className="form-container"
 >
-  <form
-    className="login-form"
-    onSubmit={[Function]}
-  >
-    <div
-      className="form-section"
-    >
-      <label
-        htmlFor="username"
-      >
-        Username
-      </label>
-      <input
-        name="username"
-        placeholder="knitpearl77"
-        required={true}
-        type="text"
-      />
-    </div>
-    <div
-      className="form-section"
-    >
-      <label
-        htmlFor="password"
-      >
-        Password
-      </label>
-      <input
-        name="password"
-        type="password"
-      />
-    </div>
-    <div
-      className="form-section"
-    >
-      <button
-        type="submit"
-      >
-        Submit
-      </button>
-    </div>
-  </form>
+  <LoginForm
+    onLoginSuccess={[Function]}
+  />
 </div>
 `;

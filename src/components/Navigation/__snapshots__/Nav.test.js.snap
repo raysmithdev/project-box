@@ -14,15 +14,15 @@ exports[`Navigation component renders without crashing 1`] = `
   </h1>
   <NavLink
     className="link"
-    to="/home"
+    to="/dashboard"
   >
-    Demo
+    Home
   </NavLink>
   <NavLink
     className="link"
     to="/new"
   >
-    New Project
+    +Project
   </NavLink>
   <NavLink
     className="link"

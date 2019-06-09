@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import ProjectContext from "../../Context/ProjectContext";
 import "./Form.css";
 
@@ -98,7 +98,7 @@ class ProjectForm extends Component {
   render() {
     return (
       <section className="form-container">
-      {this.context.currentUser === '' ? <p className="error">Please Log In</p> : {}}
+      {this.context.currentUser === '' ? <p className="error">Please Log In</p> : <Fragment />}
         <form className="create-project-form" onSubmit={this.handleSubmit}>
           <div className="input-container">
             <label htmlFor="title">Project title</label>

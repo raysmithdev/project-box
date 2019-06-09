@@ -1,5 +1,6 @@
 {
     "version": 2,
+    "alias": "project-box",
     "name": "project-box",
     "routes": [
         {

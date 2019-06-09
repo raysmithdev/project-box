@@ -69,42 +69,9 @@ exports[`LandingPage component renders without crashing 1`] = `
         Join
       </h3>
     </header>
-    <form
-      className="signup-form"
-    >
-      <div>
-        <label
-          htmlFor="username"
-        >
-          Username
-        </label>
-        <input
-          id="username"
-          name="username"
-          placeholder="knitpearl77"
-          type="text"
-        />
-      </div>
-      <div>
-        <label
-          htmlFor="password"
-        >
-          Password
-        </label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-        />
-      </div>
-      <div>
-        <button
-          type="submit"
-        >
-          Sign Up
-        </button>
-      </div>
-    </form>
+    <RegistrationForm
+      onRegistrationSuccess={[Function]}
+    />
   </section>
 </div>
 `;
