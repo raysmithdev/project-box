@@ -51,6 +51,7 @@ class Dashboard extends React.Component {
         <h2>Dashboard</h2>
       );
     const { error } = this.context;
+
     return (
       <section className="project-list">
         <header className="list-header">{greeting}</header>

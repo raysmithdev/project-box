@@ -31,6 +31,10 @@ class App extends Component {
     };
   }
 
+  handleClickCancel = () => {
+    this.props.history.push("/dashboard");
+  };
+
   handleLogin = e => {
     e.preventDefault();
     this.setState({ currentUser: this.state.loginUsername });
@@ -104,6 +108,7 @@ class App extends Component {
       setProjectList: this.setProjectList,
       projectList: this.state.projectList,
       deleteProject: this.deleteProject,
+      handleClickCancel: this.handleClickCancel,
     };
 
     return (

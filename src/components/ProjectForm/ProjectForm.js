@@ -10,7 +10,7 @@ class ProjectForm extends Component {
       steps: [""],
       title: "",
       summary: "",
-      id: '',
+      id: "",
     };
   }
 
@@ -23,7 +23,7 @@ class ProjectForm extends Component {
         summary: this.props.params.project.summary,
         id: this.props.params.project.id,
         materials: this.props.params.project.materials,
-        steps: this.props.params.project.steps
+        steps: this.props.params.project.steps,
       });
     }
   }
@@ -86,7 +86,7 @@ class ProjectForm extends Component {
       user_id: this.context.currentUserId,
       materials: this.state.materials,
       steps: this.state.steps,
-      id: this.state.id
+      id: this.state.id,
     };
     if (this.props.params.edit === "Y") {
       this.context.editProject(project);
@@ -95,10 +95,16 @@ class ProjectForm extends Component {
     }
   };
 
+
+
   render() {
     return (
       <section className="form-container">
-      {this.context.currentUser === '' ? <p className="error">Please Log In</p> : <Fragment />}
+        {this.context.currentUser === "" ? (
+          <p className="error">Please Log In</p>
+        ) : (
+          <Fragment />
+        )}
         <form className="create-project-form" onSubmit={this.handleSubmit}>
           <div className="input-container">
             <label htmlFor="title">Project title</label>
@@ -171,6 +177,9 @@ class ProjectForm extends Component {
 
           <div className="form-section" id="button-section">
             <button type="submit">Submit</button>
+            <button type="button" onClick={this.context.handleClickCancel}>
+              Cancel
+            </button>
           </div>
         </form>
       </section>

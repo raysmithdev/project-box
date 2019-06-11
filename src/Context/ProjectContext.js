@@ -18,6 +18,7 @@ const ProjectContext = React.createContext({
   clearProject: () => {},
   setProjectList: () => {},
   deleteProject: () => {},
+  handleClickCancel: () => {},
 });
 
 export default ProjectContext;

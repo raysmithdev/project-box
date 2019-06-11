@@ -15,6 +15,7 @@ class ViewProject extends Component {
     const project = this.context.projectList.find(
       project => project.id === Number(this.props.match.params.id)
     );
+    console.log(project)
     return (
       <Fragment>
         <section className="project-container">
@@ -33,6 +34,7 @@ class ViewProject extends Component {
               return <li key={index}>{step}</li>;
             })}
           </ol>
+          <p>Project Created By: {project.username}</p>
           {this.context.currentUserId === project.user_id ? (
             <div id="button-section">
               <Link id="link" to={`/edit/${project.id}`}>
