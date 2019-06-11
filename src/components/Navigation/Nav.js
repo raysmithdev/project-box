@@ -40,7 +40,7 @@ class Navigation extends Component {
         <NavLink to="/new" className="link">
           +Project
         </NavLink>
-        {this.context.currentUser !== ''
+        {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
       </nav>

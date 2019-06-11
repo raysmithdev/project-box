@@ -24,6 +24,7 @@ class LoginForm extends Component {
       .then(res => {
         this.context.setCurrentUser(username.value);
         this.context.setCurrentUserId(res.user_id);
+        console.log(this.context.currentUser)
         username.value = "";
         password.value = "";
         TokenService.saveAuthToken(res.authToken);
@@ -46,7 +47,7 @@ class LoginForm extends Component {
               type="text"
               name="username"
               placeholder="knitpearl77"
-              // onChange={this.context.handleUsernameChange}
+              onChange={this.context.handleUsernameChange}
               required
             />
           </div>

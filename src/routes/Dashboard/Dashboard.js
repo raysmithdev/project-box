@@ -11,7 +11,12 @@ class Dashboard extends React.Component {
       isChecked: false,
     };
   }
+  
   static contextType = ProjectContext;
+
+  componentDidMount() {
+    this.context.clearError();
+  }
 
   componentDidUpdate() {
     ProjectsApiService.getProjects()
