@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectTile Component renders correctly given project prop 1`] = `
+<Link
+  className="tile"
+  to="/project/1"
+>
+  <img
+    alt="hi"
+    className="tile-img"
+    src="blahs"
+  />
+  <h3
+    className="tile-title"
+  />
+</Link>
+`;

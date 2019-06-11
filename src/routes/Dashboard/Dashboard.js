@@ -13,13 +13,6 @@ class Dashboard extends React.Component {
   }
   static contextType = ProjectContext;
 
-  componentDidMount() {
-    this.context.clearError();
-    // ProjectsApiService.getProjects()
-    //   .then(this.context.setProjectList)
-    //   .catch(this.context.setError);
-  }
-
   componentDidUpdate() {
     ProjectsApiService.getProjects()
       .then(this.context.setProjectList)

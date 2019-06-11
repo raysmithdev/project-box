@@ -26,9 +26,10 @@ exports[`Navigation component renders without crashing 1`] = `
   </NavLink>
   <NavLink
     className="link"
+    onClick={[Function]}
     to="/login"
   >
-    Log In
+    Logout
   </NavLink>
 </nav>
 `;

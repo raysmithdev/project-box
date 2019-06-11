@@ -1,11 +1,11 @@
 import React from "react";
 import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
-import Dashboard from './Dashboard';
+import LoginForm from "./LoginForm";
 
-describe(`Dashboard  component`, () => {
+describe(`LoginForm component`, () => {
   it("renders without crashing", () => {
-    const wrapper = shallow(<Dashboard  />);
+    const wrapper = shallow(<LoginForm />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

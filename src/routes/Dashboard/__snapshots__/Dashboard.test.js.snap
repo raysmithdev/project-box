@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard  component renders without crashing 1`] = `
+<section
+  className="project-list"
+>
+  <header
+    className="list-header"
+  >
+    <h2>
+      's Dashboard
+    </h2>
+  </header>
+  <label
+    className="switch"
+  >
+    <input
+      className="switch-input"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <span
+      className="switch-label"
+      data-off="All"
+      data-on="Mine"
+    />
+    <span
+      className="switch-handle"
+    />
+  </label>
+  <div
+    className="list-projecttiles"
+  />
+</section>
+`;

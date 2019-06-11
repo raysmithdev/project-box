@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegistrationForm  component renders without crashing 1`] = `
+<form
+  className="signup-form"
+  onSubmit={[Function]}
+>
+  <div>
+    <label
+      htmlFor="username"
+    >
+      Username
+    </label>
+    <input
+      id="username"
+      name="username"
+      placeholder="knitpearl77"
+      type="text"
+    />
+  </div>
+  <div>
+    <label
+      htmlFor="password"
+    >
+      Password
+    </label>
+    <input
+      id="password"
+      name="password"
+      type="password"
+    />
+  </div>
+  <div>
+    <button
+      type="submit"
+    >
+      Sign Up
+    </button>
+  </div>
+</form>
+`;
