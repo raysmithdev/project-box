@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment} from "react";
 import TokenService from "../../services/token-service";
 import { NavLink } from "react-router-dom";
 import "./Nav.css";
@@ -13,9 +13,14 @@ class Navigation extends Component {
 
   renderLogoutLink() {
     return (
-      <NavLink className="link" onClick={this.handleLogoutClick} to="/login">
-        Logout
-      </NavLink>
+      <Fragment>
+        <NavLink to="/new" className="link">
+          +Project
+        </NavLink>
+        <NavLink className="link" onClick={this.handleLogoutClick} to="/login">
+          Logout
+        </NavLink>
+      </Fragment>
     );
   }
 
@@ -36,9 +41,6 @@ class Navigation extends Component {
         </h1>
         <NavLink to="/dashboard" className="link">
           Home
-        </NavLink>
-        <NavLink to="/new" className="link">
-          +Project
         </NavLink>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
