@@ -16,9 +16,6 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     this.context.clearError();
-  }
-
-  componentDidUpdate() {
     ProjectsApiService.getProjects()
       .then(this.context.setProjectList)
       .catch(this.context.setError);
