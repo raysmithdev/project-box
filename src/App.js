@@ -56,8 +56,8 @@ class App extends Component {
   };
 
   setCurrentUserId = userId => {
-    this.setState({ currentUserId: userId})
-  }
+    this.setState({ currentUserId: userId });
+  };
 
   setProjectList = projectList => {
     this.setState({ projectList });
@@ -87,7 +87,11 @@ class App extends Component {
 
   redirectToLogin = () => {
     this.props.history.push("/login");
-  }
+  };
+
+  handleClickCancel = () => {
+    this.props.history.push("/dashboard");
+  };
 
   render() {
     const contextValue = {
@@ -109,6 +113,7 @@ class App extends Component {
       setProjectList: this.setProjectList,
       projectList: this.state.projectList,
       deleteProject: this.deleteProject,
+      handleClickCancel: this.handleClickCancel,
     };
 
     return (
