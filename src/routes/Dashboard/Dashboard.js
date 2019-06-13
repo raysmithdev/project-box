@@ -68,7 +68,7 @@ class Dashboard extends React.Component {
           <Fragment />
         )}
 
-        <div className="list-projecttiles">
+        <div className="list-projecttiles" aria-live="polite">
           {error ? (
             <p className="error">Sorry, there was an error</p>
           ) : (
