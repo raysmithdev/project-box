@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import ProjectContext from "../../Context/ProjectContext";
+import TokenService from '../../services/token-service'
 import "./Form.css";
 
 class ProjectForm extends Component {
@@ -17,6 +18,9 @@ class ProjectForm extends Component {
   static contextType = ProjectContext;
 
   componentDidMount() {
+    if(!TokenService.hasAuthToken()) {
+      this.props.history.push('/login')
+    }
     if (this.props.params.edit === "Y") {
       this.setState({
         title: this.props.params.project.title,
