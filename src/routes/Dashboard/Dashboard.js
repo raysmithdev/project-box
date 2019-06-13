@@ -9,10 +9,18 @@ class Dashboard extends React.Component {
     super(props);
     this.state = {
       isChecked: false,
+      query: "",
+      results: [],
     };
   }
-  
+
   static contextType = ProjectContext;
+
+  updateQueryValue(e) {
+    this.setState({ results: [] });
+    this.setState({ query: e.target.value });
+    console.log(this.state.query);
+  }
 
   componentDidMount() {
     this.context.clearError();
@@ -43,6 +51,38 @@ class Dashboard extends React.Component {
     }
   }
 
+  // renderProjects() {
+  //   const { projectList = [] } = this.context;
+  //   if (this.state.isChecked && this.state.query !== "") {
+  //     const query = this.state.query;
+  //     const userResults = projectList.filter(
+  //       project => project.user_id === this.context.currentUserId
+  //     );
+  //     const results = userResults.filter(function(p) {
+  //       return p.title.includes(`${query}`);
+  //     });
+  //     return results.map(project => (
+  //       <ProjectTile key={project.id} project={project} />
+  //     ));
+  //   } else if (this.state.isChecked) {
+  //     return projectList
+  //       .filter(project => project.user_id === this.context.currentUserId)
+  //       .map(project => <ProjectTile key={project.id} project={project} />);
+  //   } else if (this.state.query !== "") {
+  //     const query = this.state.query;
+  //     const results = projectList.filter(function(p) {
+  //       return p.title.includes(`${query}`);
+  //     });
+  //     return results.map(project => (
+  //       <ProjectTile key={project.id} project={project} />
+  //     ));
+  //   } else {
+  //     return projectList.map(project => (
+  //       <ProjectTile key={project.id} project={project} />
+  //     ));
+  //   }
+  // }
+
   render() {
     const greeting =
       this.context.currentUser !== "" ? (
@@ -51,6 +91,7 @@ class Dashboard extends React.Component {
         <h2>Dashboard</h2>
       );
     const { error } = this.context;
+    console.log(this.state.query);
 
     return (
       <section className="project-list">
@@ -69,7 +110,15 @@ class Dashboard extends React.Component {
           <Fragment />
         )}
 
-        <div className="list-projecttiles">
+        {/* <div className="search-container">
+          <input
+            type="text"
+            placeholder="search for..."
+            value={this.state.query}
+            onChange={e => this.updateQueryValue(e)}
+          />
+        </div> */}
+        <div className="list-projecttiles" aria-live="polite">
           {error ? (
             <p className="error">Sorry, there was an error</p>
           ) : (

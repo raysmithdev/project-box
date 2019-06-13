@@ -111,9 +111,11 @@ class ProjectForm extends Component {
             <input
               type="text"
               name="title"
+              id="title"
               placeholder="knit sweater"
               value={this.state.title}
               onChange={this.handleTitleChange}
+              aria-required="true"
               required
             />
           </div>
@@ -121,6 +123,7 @@ class ProjectForm extends Component {
             <label htmlFor="summary">Summary</label>
             <textarea
               name="summary"
+              id="summary"
               rows="15"
               value={this.state.summary}
               onChange={this.handleSummaryChange}
@@ -133,6 +136,7 @@ class ProjectForm extends Component {
                 <input
                   type="text"
                   name="material"
+                  aria-labelledby="material"
                   value={material}
                   onChange={this.handleMaterialNameChange(index)}
                 />
@@ -159,6 +163,7 @@ class ProjectForm extends Component {
                 <input
                   type="text"
                   name="step"
+                  aria-labelledby="step"
                   value={step}
                   onChange={this.handleStepNameChange(index)}
                 />

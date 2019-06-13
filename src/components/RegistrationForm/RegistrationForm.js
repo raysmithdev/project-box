@@ -37,15 +37,17 @@ class RegistrationForm extends Component {
         <div>
           <label htmlFor="username">Username</label>
           <input
-            placeholder="knitpearl77"
+            placeholder="Username..."
             type="text"
             name="username"
             id="username"
+            aria-required="true"
+            required
           />
         </div>
         <div>
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" />
+          <input type="password" name="password" id="password" aria-required="true" required />
         </div>
         <div>
           <button type="submit">Sign Up</button>

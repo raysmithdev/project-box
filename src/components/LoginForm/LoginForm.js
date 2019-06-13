@@ -46,14 +46,16 @@ class LoginForm extends Component {
             <input
               type="text"
               name="username"
-              placeholder="knitpearl77"
+              id="username"
+              placeholder="Username..."
+              aria-required="true"
               onChange={this.context.handleUsernameChange}
               required
             />
           </div>
           <div className="form-section">
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" />
+            <input type="password" name="password" id="password" aria-required="true" required />
           </div>
           <div className="form-section">
             <button type="submit">Submit</button>
