@@ -85,12 +85,17 @@ class App extends Component {
     this.props.history.push("/dashboard");
   };
 
+  redirectToLogin = () => {
+    this.props.history.push("/login");
+  }
+
   render() {
     const contextValue = {
       currentUser: this.state.currentUser,
       currentUserId: this.state.currentUserId,
       loginUsername: this.state.loginUsername,
       projects: this.state.projects,
+      redirectToLogin: this.redirectToLogin,
       handleLogin: this.handleLogin,
       handleUsernameChange: this.handleUsernameChange,
       handleSubmitNewProject: this.handleSubmitNewProject,

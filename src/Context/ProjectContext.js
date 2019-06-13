@@ -17,6 +17,7 @@ const ProjectContext = React.createContext({
   setProject: () => {},
   clearProject: () => {},
   setProjectList: () => {},
+  redirectToLogin: () => {},
   deleteProject: () => {},
 });
 
