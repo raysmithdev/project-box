@@ -18,8 +18,10 @@ exports[`LoginForm component renders without crashing 1`] = `
         Username
       </label>
       <input
+        aria-required="true"
+        id="username"
         name="username"
-        placeholder="knitpearl77"
+        placeholder="Username..."
         required={true}
         type="text"
       />
@@ -33,7 +35,10 @@ exports[`LoginForm component renders without crashing 1`] = `
         Password
       </label>
       <input
+        aria-required="true"
+        id="password"
         name="password"
+        required={true}
         type="password"
       />
     </div>

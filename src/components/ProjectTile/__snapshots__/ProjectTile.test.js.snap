@@ -6,7 +6,7 @@ exports[`ProjectTile Component renders correctly given project prop 1`] = `
   to="/project/1"
 >
   <img
-    alt="hi"
+    alt=""
     className="tile-img"
     src="blahs"
   />

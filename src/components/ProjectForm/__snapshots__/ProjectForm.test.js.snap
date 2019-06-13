@@ -17,6 +17,8 @@ exports[`ProjectForm  component renders without crashing 1`] = `
         Project title
       </label>
       <input
+        aria-required="true"
+        id="title"
         name="title"
         onChange={[Function]}
         placeholder="knit sweater"
@@ -34,6 +36,7 @@ exports[`ProjectForm  component renders without crashing 1`] = `
         Summary
       </label>
       <textarea
+        id="summary"
         name="summary"
         onChange={[Function]}
         rows="15"
@@ -53,6 +56,7 @@ exports[`ProjectForm  component renders without crashing 1`] = `
         key="0"
       >
         <input
+          aria-labelledby="material"
           name="material"
           onChange={[Function]}
           type="text"
@@ -91,6 +95,7 @@ exports[`ProjectForm  component renders without crashing 1`] = `
         key="0"
       >
         <input
+          aria-labelledby="step"
           name="step"
           onChange={[Function]}
           type="text"
@@ -124,6 +129,11 @@ exports[`ProjectForm  component renders without crashing 1`] = `
         type="submit"
       >
         Submit
+      </button>
+      <button
+        type="button"
+      >
+        Cancel
       </button>
     </div>
   </form>
