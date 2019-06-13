@@ -1,5 +1,5 @@
 import config from "../config";
-
+import TokenService from "./token-service";
 const ProjectsApiService = {
   getProjects() {
     return fetch(`${config.API_ENDPOINT}/projects`, {
@@ -20,6 +20,7 @@ const ProjectsApiService = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify(project),
     }).then(res =>
