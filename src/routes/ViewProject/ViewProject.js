@@ -10,7 +10,6 @@ class ViewProject extends Component {
 
   static contextType = ProjectContext;
 
-
   render() {
     const project = this.context.projectList.find(
       project => project.id === Number(this.props.match.params.id)
@@ -21,32 +20,50 @@ class ViewProject extends Component {
           <h2 className="project-header">{project.title}</h2>
           <p className="project-summary">Summary: </p>
           <p>{project.summary}</p>
-          <p>Materials Needed:</p>
-          <ul className="materials-list">
-            {project.materials.map((material, index) => {
-              return <li key={index}>{material}</li>;
-            })}
-          </ul>
-          <p>Steps:</p>
-          <ol className="steps-list">
-            {project.steps.map((step, index) => {
-              return <li key={index}>{step}</li>;
-            })}
-          </ol>
+          {project.materials[0] === "" ? (
+            <Fragment />
+          ) : (
+            <Fragment>
+              <p>Materials Needed:</p>{" "}
+              <ul className="materials-list">
+                {project.materials.map((material, index) => {
+                  return <li key={index}>{material}</li>;
+                })}
+              </ul>
+            </Fragment>
+          )}
+          {project.steps[0] === "" ? (
+            <Fragment />
+          ) : (
+            <Fragment>
+              <p>Steps:</p>
+              <ol className="steps-list">
+                {project.steps.map((step, index) => {
+                  return <li key={index}>{step}</li>;
+                })}
+              </ol>
+            </Fragment>
+          )}
+          <div id="button-section">
+              <button className="button" onClick={this.context.handleClickCancel}>Back</button>
+          
           {this.context.currentUserId === project.user_id ? (
-            <div id="button-section">
+            <Fragment>
               <Link id="link" to={`/edit/${project.id}`}>
                 <button className="button">Edit Project</button>
               </Link>
-              <button className="button" 
-              onClick={() => this.context.deleteProject(project.id)}
+              <button
+                className="button"
+                onClick={() => this.context.deleteProject(project.id)}
               >
                 Delete Project
               </button>
-            </div>
+            </Fragment>
           ) : (
             <Fragment />
           )}
+          </div>
+
         </section>
       </Fragment>
     );
