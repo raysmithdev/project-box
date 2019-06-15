@@ -44,26 +44,29 @@ class ViewProject extends Component {
               </ol>
             </Fragment>
           )}
-          <div id="button-section">
-              <button className="button" onClick={this.context.handleClickCancel}>Back</button>
-          
-          {this.context.currentUserId === project.user_id ? (
-            <Fragment>
-              <Link id="link" to={`/edit/${project.id}`}>
-                <button className="button">Edit Project</button>
-              </Link>
-              <button
-                className="button"
-                onClick={() => this.context.deleteProject(project.id)}
-              >
-                Delete Project
-              </button>
-            </Fragment>
-          ) : (
-            <Fragment />
-          )}
-          </div>
+          <p>Project Created By: {project.username}</p>
 
+          <div id="button-section">
+            <button className="button" onClick={this.context.handleClickCancel}>
+              Back
+            </button>
+
+            {this.context.currentUserId === project.user_id ? (
+              <Fragment>
+                <Link id="link" to={`/edit/${project.id}`}>
+                  <button className="button">Edit Project</button>
+                </Link>
+                <button
+                  className="button"
+                  onClick={() => this.context.deleteProject(project.id)}
+                >
+                  Delete Project
+                </button>
+              </Fragment>
+            ) : (
+              <Fragment />
+            )}
+          </div>
         </section>
       </Fragment>
     );
