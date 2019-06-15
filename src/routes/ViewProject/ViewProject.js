@@ -14,6 +14,7 @@ class ViewProject extends Component {
     const project = this.context.projectList.find(
       project => project.id === Number(this.props.match.params.id)
     );
+    console.log(project.materials)
     return (
       <Fragment>
         <section className="project-container">
