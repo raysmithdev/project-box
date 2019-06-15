@@ -69,7 +69,11 @@ class RegistrationForm extends Component {
             id="password"
             aria-required="true"
             required
-          />
+            />
+            <p>
+              Password must be between 8-72 characters and contain at least one
+              uppercase, lowercase, number and special character
+            </p>
         </div>
         <div>
           <button type="submit">Sign Up</button>
