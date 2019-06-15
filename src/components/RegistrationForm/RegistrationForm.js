@@ -1,11 +1,15 @@
 import AuthApiService from "../../services/auth-api-service";
 import React, { Component } from "react";
+import TokenService from "../../services/token-service";
+import ProjectContext from "../../Context/ProjectContext";
 import("./RegistrationForm.css");
 
 class RegistrationForm extends Component {
   static defaultProps = {
     onRegistrationSuccess: () => {},
   };
+
+  static contextType = ProjectContext;
 
   state = { error: null };
 
@@ -17,10 +21,18 @@ class RegistrationForm extends Component {
       username: username.value,
       password: password.value,
     })
-      .then(user => {
-        username.value = "";
-        password.value = "";
-        this.props.onRegistrationSuccess(user);
+      .then(res => {
+        AuthApiService.postLogin({
+          username: username.value,
+          password: password.value,
+        }).then(res => {
+          this.context.setCurrentUser(username.value);
+          this.context.setCurrentUserId(res.user_id);
+          username.value = "";
+          password.value = "";
+          TokenService.saveAuthToken(res.authToken);
+          this.context.handleLoginSuccess();
+        });
       })
       .catch(res => {
         this.setState({ error: res.error });

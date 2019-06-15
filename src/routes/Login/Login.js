@@ -10,16 +10,12 @@ class Login extends Component {
     },
   };
 
-  handleLoginSuccess = () => {
-    const { location, history } = this.props;
-    const destination = (location.state || {}).from || "/dashboard";
-    history.push(destination);
-  };
+ 
 
   render() {
     return (
       <div className="form-container">
-        <LoginForm onLoginSuccess={this.handleLoginSuccess} />
+        <LoginForm />
       </div>
     );
   }

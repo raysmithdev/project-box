@@ -93,8 +93,15 @@ class App extends Component {
     this.props.history.push("/dashboard");
   };
 
+  handleLoginSuccess = () => {
+    const { location, history } = this.props;
+    const destination = (location.state || {}).from || "/dashboard";
+    history.push(destination);
+  };
+
   render() {
     const contextValue = {
+      handleLoginSuccess: this.handleLoginSuccess,
       currentUser: this.state.currentUser,
       currentUserId: this.state.currentUserId,
       loginUsername: this.state.loginUsername,

@@ -10,8 +10,27 @@ class LandingPage extends Component {
   };
 
   handleRegistrationSuccess = user => {
-    const { history } = this.props;
-    history.push("/login");
+    // const { history } = this.props;
+    // history.push("/login");
+    console.log(user)
+    //   const { username, password } = user;
+  
+    //   AuthApiService.postLogin({
+    //     username: username.value,
+    //     password: password.value,
+    //   })
+    //     .then(res => {
+    //       this.context.setCurrentUser(username.value);
+    //       this.context.setCurrentUserId(res.user_id);
+    //       username.value = "";
+    //       password.value = "";
+    //       TokenService.saveAuthToken(res.authToken);
+    //       this.props.onLoginSuccess();
+    //     })
+    //     .catch(res => {
+    //       this.setState({ error: res.error });
+    //     });
+    // };
   };
 
   render() {

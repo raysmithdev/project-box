@@ -19,7 +19,8 @@ const ProjectContext = React.createContext({
   setProjectList: () => {},
   redirectToLogin: () => {},
   deleteProject: () => {},
-  handleClickCancel: () => {}
+  handleClickCancel: () => {},
+  handleLoginSuccess: () => {},
 });
 
 export default ProjectContext;
