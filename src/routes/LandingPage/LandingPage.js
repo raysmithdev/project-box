@@ -52,7 +52,8 @@ class LandingPage extends Component {
           <header className="large-text">
             <h3>Record your projects</h3>
           </header>
-          <p className="img">[placeholder for screenshot of project page]</p>
+          {/* <p className="img">[placeholder for screenshot of project page]</p> */}
+          <img src="../../images/knit.jpeg" alt="yellow knit" className="img" />
           <p className="text">
             Record your projects with ease, simply input your materials list,
             process pictures, steps, and any other notes relevant to your
