@@ -5,6 +5,8 @@ import ProjectContext from "../../Context/ProjectContext";
 import ProjectsApiService from "../../services/project-api-service";
 
 class Dashboard extends React.Component {
+  static contextType = ProjectContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -14,10 +16,16 @@ class Dashboard extends React.Component {
     };
   }
 
-  static contextType = ProjectContext;
-
   componentDidMount() {
     this.context.clearError();
+    this.setState({ isLoading: true })
+    ProjectsApiService.getProjects()
+      .then(results => this.setState({ results }))
+      .then(this.context.setProjectList)
+      .catch(this.context.setError);
+  }
+
+  componentDidUpdate() {
     ProjectsApiService.getProjects()
       .then(this.context.setProjectList)
       .catch(this.context.setError);
@@ -32,7 +40,6 @@ class Dashboard extends React.Component {
   updateQueryValue(e) {
     this.setState({ results: [] });
     this.setState({ query: e.target.value });
-    console.log(this.state.query);
     this.handleSearch();
   }
 
@@ -51,6 +58,7 @@ class Dashboard extends React.Component {
   };
 
   renderProjects() {
+    //TODO: debug: why isn't a render immediately triggered after state is set in handlesearch? - when search box becomes empty, handlesearch sets results in state to entire projectList <-- this is reflected in console.log on line 56, but renderProjects isn't triggered (dashboard is empty) until something is typed into search box again...
     const results = this.state.results;
     if (this.state.isChecked) {
       return results
