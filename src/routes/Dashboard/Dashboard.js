@@ -9,9 +9,11 @@ class Dashboard extends React.Component {
     super(props);
     this.state = {
       isChecked: false,
+      query: "",
+      results: [],
     };
   }
-  
+
   static contextType = ProjectContext;
 
   componentDidMount() {
@@ -27,14 +29,35 @@ class Dashboard extends React.Component {
     });
   };
 
+  updateQueryValue(e) {
+    this.setState({ results: [] });
+    this.setState({ query: e.target.value });
+    console.log(this.state.query);
+    this.handleSearch();
+  }
+
+  handleSearch = () => {
+    const query = this.state.query;
+    if (query.length < 1) {
+      const results = this.context.projectList;
+      this.setState({ results });
+    } else {
+      const results = this.context.projectList.filter(project =>
+        project.title.includes(`${query}`)
+      );
+      this.setState({ results });
+    }
+    console.log(this.state.results);
+  };
+
   renderProjects() {
-    const { projectList = [] } = this.context;
+    const results = this.state.results;
     if (this.state.isChecked) {
-      return projectList
+      return results
         .filter(project => project.user_id === this.context.currentUserId)
         .map(project => <ProjectTile key={project.id} project={project} />);
     } else {
-      return projectList.map(project => (
+      return results.map(project => (
         <ProjectTile key={project.id} project={project} />
       ));
     }
@@ -64,6 +87,15 @@ class Dashboard extends React.Component {
         ) : (
           <Fragment />
         )}
+
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="search for..."
+            value={this.state.query}
+            onChange={e => this.updateQueryValue(e)}
+          />
+        </div>
 
         <div className="list-projecttiles" aria-live="polite">
           {error ? (
