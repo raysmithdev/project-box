@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import ProjectsApiService from "../../services/project-api-service";
 import ProjectContext from "../../Context/ProjectContext";
 import ProjectTile from "../../components/ProjectTile/ProjectTile";
-import LoadingIndicator from '../../components/LoadingIndicator/LoadingIndicator'
+import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 import "./Dashboard.css";
 
 class Dashboard extends React.Component {
@@ -20,10 +20,10 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     this.context.clearError();
-    this.setState({ isLoading: true })
+    this.setState({ isLoading: true });
     ProjectsApiService.getProjects()
       .then(this.context.setProjectList)
-      .then(this.setState({isLoading: false}))
+      .then(this.setState({ isLoading: false }))
       .catch(this.context.setError);
   }
 
@@ -80,29 +80,39 @@ class Dashboard extends React.Component {
       <section className="project-list">
         <header className="list-header">{greeting}</header>
         {this.context.currentUser !== "" ? (
-          <label className="switch">
-            <input
-              className="switch-input"
-              type="checkbox"
-              onChange={this.handleSwitch}
-            />
-            <span className="switch-label" data-on="Mine" data-off="All" />
-            <span className="switch-handle" />
-          </label>
+          <div className="switch-container">
+            <label className="switch">
+              <input
+                className="switch-input"
+                type="checkbox"
+                onChange={this.handleSwitch}
+              />
+              <span className="switch-label" data-on="Mine" data-off="All" />
+              <span className="switch-handle" />
+            </label>
+          </div>
         ) : (
           <Fragment />
         )}
 
         <div className="search-container">
+          <label htmlFor="search">
+            <span className="screen-reader-label">Search:</span>
+          </label>
           <input
             type="text"
+            id="search"
             placeholder="search for..."
             value={this.state.query}
             onChange={e => this.updateQueryValue(e)}
           />
         </div>
         <div>
-          {this.state.isLoading && this.context.error === null? <LoadingIndicator /> : <Fragment />}
+          {this.state.isLoading && this.context.error === null ? (
+            <LoadingIndicator />
+          ) : (
+            <Fragment />
+          )}
         </div>
 
         <div className="list-projecttiles" aria-live="polite">
