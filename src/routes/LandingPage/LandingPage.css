@@ -1,41 +1,44 @@
 .landingpage-container {
-    padding: 50px 0;
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
+  padding: 50px 0;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .large-text {
-    text-align: center;
-    color: whitesmoke;
-    font-size: 4.5vw;
+  text-align: center;
+  color: whitesmoke;
+  font-size: 4.5vw;
 }
 
 section .img {
-    text-align: center;
-    padding: 10%;
-    border: 1px solid darkmagenta;
-    max-width: 600px;
-    margin: 20px auto;
-    font-weight: 300;
-    letter-spacing: .09em;
-    text-transform: uppercase;
+  text-align: center;
+  display: block;
+  max-width: 95%;
+  max-height: 550px;
+  margin: 20px auto;
+  font-weight: 300;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
 }
 
 section .text {
-    max-width: 600px;
-    margin: 20px auto;
-    color: darkmagenta;
+  max-width: 80%;
+  margin: 5% auto;
+  text-align: center;
+  font-size: 2vw;
+  line-height: 2.5vw;
+  color: darkmagenta;
 }
 
 section .text,
 section .large-text {
-    padding: 8px;
-    font-weight: 300;
-    letter-spacing: .09em;
-    text-transform: uppercase;
+  padding: 8px;
+  font-weight: 300;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
 }
 
 .landingpage-container section {
-    margin-bottom: 100px;
+  margin-bottom: 100px;
 }

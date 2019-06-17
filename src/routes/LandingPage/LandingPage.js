@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import "./LandingPage.css";
+import knit from "../../images/knit.png";
+import paint from "../../images/paint.png";
+import tools from "../../images/tools.png";
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 
 class LandingPage extends Component {
@@ -16,8 +19,7 @@ class LandingPage extends Component {
           <header className="large-text">
             <h3>A Place For Projects</h3>
           </header>
-          <p className="img">[placeholder for visual element]</p>
-          {/* <img src='https://images.pexels.com/photos/301703/pexels-photo-301703.jpeg?cs=srgb&dl=background-blank-craft-301703.jpg&fm=jpg' alt="craft tools on desk" className="img"/> */}
+          <img src={tools} alt="craft tools on paper" className="img" />
           <p className="text">
             Project Box helps you record how you made that thing! Like grandma's
             old recipe book, Project Box is a reliable reference that helps you
@@ -28,8 +30,7 @@ class LandingPage extends Component {
           <header className="large-text">
             <h3>Record your projects</h3>
           </header>
-          <p className="img">[placeholder for screenshot of project page]</p>
-          {/* <img src="../../images/knit.jpeg" alt="yellow knit" className="img" /> */}
+          <img src={knit} alt="yellow knit" className="img" />
           <p className="text">
             Record your projects with ease, simply input your materials list,
             process pictures, steps, and any other notes relevant to your
@@ -40,9 +41,7 @@ class LandingPage extends Component {
           <header className="large-text">
             <h3>Discover new projects</h3>
           </header>
-          <p className="img">
-            [placeholder for screenshot of projects list page]
-          </p>
+          <img src={paint} alt="colorful artists paints" className="img" />
           <p className="text">
             Browse project box and get started on your next craft
           </p>
