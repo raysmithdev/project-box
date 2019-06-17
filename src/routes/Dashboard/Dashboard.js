@@ -41,7 +41,7 @@ class Dashboard extends React.Component {
     console.log(this.context);
     if (query.length >= 1) {
       const results = this.context.projectList.filter(project =>
-        project.title.includes(`${query}`) || project.summary.includes(`${query}`)
+        project.title.includes(`${query}`)
       );
       this.setState({ results });
     } else {
@@ -56,7 +56,6 @@ class Dashboard extends React.Component {
       this.state.results.length < 1
         ? this.context.projectList
         : this.state.results;
-    console.log("render");
     if (this.state.isChecked) {
       return results
         .filter(project => project.user_id === this.context.currentUserId)
@@ -69,7 +68,6 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    console.log(this.context);
     const greeting =
       this.context.currentUser !== "" ? (
         <h2>{this.context.currentUser}'s Dashboard</h2>
