@@ -69,7 +69,6 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    console.log(this.state.isLoading)
     const greeting =
       this.context.currentUser !== "" ? (
         <h2>{this.context.currentUser}'s Dashboard</h2>
