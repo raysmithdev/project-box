@@ -18,12 +18,8 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     this.context.clearError();
-    this.setState({ isLoading: true });
     ProjectsApiService.getProjects()
-      .then(function() {
-        // this.setState({ isLoading: false });
-        this.context.setProjectList();
-      })
+      .then(this.context.setProjectList)
       .catch(this.context.setError);
   }
 
@@ -45,7 +41,7 @@ class Dashboard extends React.Component {
     console.log(this.context);
     if (query.length >= 1) {
       const results = this.context.projectList.filter(project =>
-        project.title.includes(`${query}`)
+        project.title.includes(`${query}`) || project.summary.includes(`${query}`)
       );
       this.setState({ results });
     } else {
