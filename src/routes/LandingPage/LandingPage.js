@@ -9,30 +9,6 @@ class LandingPage extends Component {
     },
   };
 
-  handleRegistrationSuccess = user => {
-    // const { history } = this.props;
-    // history.push("/login");
-    console.log(user)
-    //   const { username, password } = user;
-  
-    //   AuthApiService.postLogin({
-    //     username: username.value,
-    //     password: password.value,
-    //   })
-    //     .then(res => {
-    //       this.context.setCurrentUser(username.value);
-    //       this.context.setCurrentUserId(res.user_id);
-    //       username.value = "";
-    //       password.value = "";
-    //       TokenService.saveAuthToken(res.authToken);
-    //       this.props.onLoginSuccess();
-    //     })
-    //     .catch(res => {
-    //       this.setState({ error: res.error });
-    //     });
-    // };
-  };
-
   render() {
     return (
       <div className="landingpage-container">
@@ -52,8 +28,8 @@ class LandingPage extends Component {
           <header className="large-text">
             <h3>Record your projects</h3>
           </header>
-          {/* <p className="img">[placeholder for screenshot of project page]</p> */}
-          <img src="../../images/knit.jpeg" alt="yellow knit" className="img" />
+          <p className="img">[placeholder for screenshot of project page]</p>
+          {/* <img src="../../images/knit.jpeg" alt="yellow knit" className="img" /> */}
           <p className="text">
             Record your projects with ease, simply input your materials list,
             process pictures, steps, and any other notes relevant to your
@@ -75,9 +51,7 @@ class LandingPage extends Component {
           <header className="large-text">
             <h3>Join</h3>
           </header>
-          <RegistrationForm
-            onRegistrationSuccess={this.handleRegistrationSuccess}
-          />
+          <RegistrationForm />
         </section>
       </div>
     );

@@ -70,7 +70,7 @@ class RegistrationForm extends Component {
             aria-required="true"
             required
             />
-            <p>
+            <p aria-live="polite">
               Password must be between 8-72 characters and contain at least one
               uppercase, lowercase, number and special character
             </p>

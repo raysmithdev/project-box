@@ -18,16 +18,12 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     this.context.clearError();
-    this.setState({ isLoading: true })
+    this.setState({ isLoading: true });
     ProjectsApiService.getProjects()
-      .then(results => this.setState({ results }))
-      .then(this.context.setProjectList)
-      .catch(this.context.setError);
-  }
-
-  componentDidUpdate() {
-    ProjectsApiService.getProjects()
-      .then(this.context.setProjectList)
+      .then(function() {
+        // this.setState({ isLoading: false });
+        this.context.setProjectList();
+      })
       .catch(this.context.setError);
   }
 
@@ -37,29 +33,34 @@ class Dashboard extends React.Component {
     });
   };
 
-  updateQueryValue(e) {
-    this.setState({ results: [] });
-    this.setState({ query: e.target.value });
-    this.handleSearch();
-  }
+  updateQueryValue = e => {
+    this.setState({ results: [], query: e.target.value }, function() {
+      this.handleSearch();
+    });
+    console.log("hi");
+  };
 
   handleSearch = () => {
     const query = this.state.query;
-    if (query.length < 1) {
-      const results = this.context.projectList;
-      this.setState({ results });
-    } else {
+    console.log(this.context);
+    if (query.length >= 1) {
       const results = this.context.projectList.filter(project =>
         project.title.includes(`${query}`)
       );
+      this.setState({ results });
+    } else {
+      const results = this.context.projectList;
       this.setState({ results });
     }
     console.log(this.state.results);
   };
 
   renderProjects() {
-    //TODO: debug: why isn't a render immediately triggered after state is set in handlesearch? - when search box becomes empty, handlesearch sets results in state to entire projectList <-- this is reflected in console.log on line 56, but renderProjects isn't triggered (dashboard is empty) until something is typed into search box again...
-    const results = this.state.results;
+    const results =
+      this.state.results.length < 1
+        ? this.context.projectList
+        : this.state.results;
+    console.log("render");
     if (this.state.isChecked) {
       return results
         .filter(project => project.user_id === this.context.currentUserId)
@@ -72,6 +73,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    console.log(this.context);
     const greeting =
       this.context.currentUser !== "" ? (
         <h2>{this.context.currentUser}'s Dashboard</h2>
