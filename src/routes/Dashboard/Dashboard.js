@@ -33,12 +33,10 @@ class Dashboard extends React.Component {
     this.setState({ results: [], query: e.target.value }, function() {
       this.handleSearch();
     });
-    console.log("hi");
   };
 
   handleSearch = () => {
     const query = this.state.query;
-    console.log(this.context);
     if (query.length >= 1) {
       const results = this.context.projectList.filter(project =>
         project.title.includes(`${query}`)
@@ -48,7 +46,6 @@ class Dashboard extends React.Component {
       const results = this.context.projectList;
       this.setState({ results });
     }
-    console.log(this.state.results);
   };
 
   renderProjects() {
