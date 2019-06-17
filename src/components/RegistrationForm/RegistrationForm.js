@@ -44,7 +44,7 @@ class RegistrationForm extends Component {
   render() {
     return (
       <Fragment>
-        {this.state.isLoading ? (
+        {this.state.isLoading && this.state.error === null ? (
           <LoadingIndicator />
         ) : (
           <form

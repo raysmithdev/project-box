@@ -40,7 +40,7 @@ class LoginForm extends Component {
     const { error } = this.state;
     return (
       <Fragment>
-        {this.state.isLoading ? (
+        {this.state.isLoading && this.state.error === null ? (
           <LoadingIndicator />
         ) : (
           <Fragment>

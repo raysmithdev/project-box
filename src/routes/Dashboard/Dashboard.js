@@ -103,7 +103,7 @@ class Dashboard extends React.Component {
           />
         </div>
         <div>
-          {this.state.isLoading ? <LoadingIndicator /> : <Fragment />}
+          {this.state.isLoading && this.context.error === null? <LoadingIndicator /> : <Fragment />}
         </div>
 
         <div className="list-projecttiles" aria-live="polite">
