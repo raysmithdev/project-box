@@ -18,6 +18,10 @@
   max-width: 1200px;
 }
 
+.search-container {
+	margin: 8px;
+}
+
 .switch {
 	position: relative;
     display: block;

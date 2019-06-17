@@ -1,7 +1,8 @@
 import AuthApiService from "../../services/auth-api-service";
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import TokenService from "../../services/token-service";
 import ProjectContext from "../../Context/ProjectContext";
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator";
 import("./RegistrationForm.css");
 
 class RegistrationForm extends Component {
@@ -11,12 +12,12 @@ class RegistrationForm extends Component {
 
   static contextType = ProjectContext;
 
-  state = { error: null };
+  state = { error: null, isLoading: false };
 
   handleRegistrationFormSubmit = e => {
     e.preventDefault();
     const { username, password } = e.target;
-    this.setState({ error: null });
+    this.setState({ error: null, isLoading: true });
     AuthApiService.postUser({
       username: username.value,
       password: password.value,
@@ -32,6 +33,7 @@ class RegistrationForm extends Component {
           password.value = "";
           TokenService.saveAuthToken(res.authToken);
           this.context.handleLoginSuccess();
+          this.setState({ isLoading: false });
         });
       })
       .catch(res => {
@@ -41,44 +43,50 @@ class RegistrationForm extends Component {
 
   render() {
     return (
-      <form
-        className="signup-form"
-        onSubmit={this.handleRegistrationFormSubmit}
-      >
-        {this.state.error !== null && this.state.error !== undefined ? (
-          <p className="error">{this.state.error}</p>
+      <Fragment>
+        {this.state.isLoading ? (
+          <LoadingIndicator />
         ) : (
-          ""
+          <form
+            className="signup-form"
+            onSubmit={this.handleRegistrationFormSubmit}
+          >
+            {this.state.error !== null && this.state.error !== undefined ? (
+              <p className="error">{this.state.error}</p>
+            ) : (
+              ""
+            )}
+            <div>
+              <label htmlFor="username">Username</label>
+              <input
+                placeholder="Username..."
+                type="text"
+                name="username"
+                id="username"
+                aria-required="true"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                aria-required="true"
+                required
+              />
+              <p aria-live="polite">
+                Password must be between 8-72 characters and contain at least
+                one uppercase, lowercase, number and special character
+              </p>
+            </div>
+            <div>
+              <button type="submit">Sign Up</button>
+            </div>
+          </form>
         )}
-        <div>
-          <label htmlFor="username">Username</label>
-          <input
-            placeholder="Username..."
-            type="text"
-            name="username"
-            id="username"
-            aria-required="true"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            aria-required="true"
-            required
-            />
-            <p aria-live="polite">
-              Password must be between 8-72 characters and contain at least one
-              uppercase, lowercase, number and special character
-            </p>
-        </div>
-        <div>
-          <button type="submit">Sign Up</button>
-        </div>
-      </form>
+      </Fragment>
     );
   }
 }

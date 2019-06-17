@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import TokenService from "../../services/token-service";
 import AuthApiService from "../../services/auth-api-service";
 import ProjectContext from "../../Context/ProjectContext";
+import LoadingIndicator from '../LoadingIndicator/LoadingIndicator'
 
 class LoginForm extends Component {
   static defaultProps = {
@@ -10,11 +11,11 @@ class LoginForm extends Component {
 
   static contextType = ProjectContext;
 
-  state = { error: null };
+  state = { error: null, isLoading: false };
 
   handleSubmitJwtAuth = e => {
     e.preventDefault();
-    this.setState({ error: null });
+    this.setState({ error: null, isLoading: true });
     const { username, password } = e.target;
 
     AuthApiService.postLogin({
@@ -28,6 +29,7 @@ class LoginForm extends Component {
         password.value = "";
         TokenService.saveAuthToken(res.authToken);
         this.context.handleLoginSuccess();
+        this.setState({ isLoading: false });
       })
       .catch(res => {
         this.setState({ error: res.error });
@@ -38,28 +40,42 @@ class LoginForm extends Component {
     const { error } = this.state;
     return (
       <Fragment>
-        <form className="login-form" onSubmit={this.handleSubmitJwtAuth}>
-          <div role="alert">{error && <p className="error">{error}</p>}</div>
-          <div className="form-section">
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              placeholder="Username..."
-              aria-required="true"
-              onChange={this.context.handleUsernameChange}
-              required
-            />
-          </div>
-          <div className="form-section">
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" aria-required="true" required />
-          </div>
-          <div className="form-section">
-            <button type="submit">Submit</button>
-          </div>
-        </form>
+        {this.state.isLoading ? (
+          <LoadingIndicator />
+        ) : (
+          <Fragment>
+            <form className="login-form" onSubmit={this.handleSubmitJwtAuth}>
+              <div role="alert">
+                {error && <p className="error">{error}</p>}
+              </div>
+              <div className="form-section">
+                <label htmlFor="username">Username</label>
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  placeholder="Username..."
+                  aria-required="true"
+                  onChange={this.context.handleUsernameChange}
+                  required
+                />
+              </div>
+              <div className="form-section">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  aria-required="true"
+                  required
+                />
+              </div>
+              <div className="form-section">
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+          </Fragment>
+        )}{" "}
       </Fragment>
     );
   }

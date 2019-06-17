@@ -1,50 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RegistrationForm  component renders without crashing 1`] = `
-<form
-  className="signup-form"
-  onSubmit={[Function]}
->
-  <div>
-    <label
-      htmlFor="username"
-    >
-      Username
-    </label>
-    <input
-      aria-required="true"
-      id="username"
-      name="username"
-      placeholder="Username..."
-      required={true}
-      type="text"
-    />
-  </div>
-  <div>
-    <label
-      htmlFor="password"
-    >
-      Password
-    </label>
-    <input
-      aria-required="true"
-      id="password"
-      name="password"
-      required={true}
-      type="password"
-    />
-    <p
-      aria-live="polite"
-    >
-      Password must be between 8-72 characters and contain at least one uppercase, lowercase, number and special character
-    </p>
-  </div>
-  <div>
-    <button
-      type="submit"
-    >
-      Sign Up
-    </button>
-  </div>
-</form>
+<Fragment>
+  <form
+    className="signup-form"
+    onSubmit={[Function]}
+  >
+    <div>
+      <label
+        htmlFor="username"
+      >
+        Username
+      </label>
+      <input
+        aria-required="true"
+        id="username"
+        name="username"
+        placeholder="Username..."
+        required={true}
+        type="text"
+      />
+    </div>
+    <div>
+      <label
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        aria-required="true"
+        id="password"
+        name="password"
+        required={true}
+        type="password"
+      />
+      <p
+        aria-live="polite"
+      >
+        Password must be between 8-72 characters and contain at least one uppercase, lowercase, number and special character
+      </p>
+    </div>
+    <div>
+      <button
+        type="submit"
+      >
+        Sign Up
+      </button>
+    </div>
+  </form>
+</Fragment>
 `;

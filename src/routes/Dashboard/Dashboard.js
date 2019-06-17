@@ -3,6 +3,7 @@ import ProjectTile from "../../components/ProjectTile/ProjectTile";
 import "./Dashboard.css";
 import ProjectContext from "../../Context/ProjectContext";
 import ProjectsApiService from "../../services/project-api-service";
+import LoadingIndicator from '../../components/LoadingIndicator/LoadingIndicator'
 
 class Dashboard extends React.Component {
   static contextType = ProjectContext;
@@ -13,13 +14,16 @@ class Dashboard extends React.Component {
       isChecked: false,
       query: "",
       results: [],
+      isLoading: false,
     };
   }
 
   componentDidMount() {
     this.context.clearError();
+    this.setState({ isLoading: true })
     ProjectsApiService.getProjects()
       .then(this.context.setProjectList)
+      .then(this.setState({isLoading: false}))
       .catch(this.context.setError);
   }
 
@@ -65,6 +69,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    console.log(this.state.isLoading)
     const greeting =
       this.context.currentUser !== "" ? (
         <h2>{this.context.currentUser}'s Dashboard</h2>
@@ -96,6 +101,9 @@ class Dashboard extends React.Component {
             value={this.state.query}
             onChange={e => this.updateQueryValue(e)}
           />
+        </div>
+        <div>
+          {this.state.isLoading ? <LoadingIndicator /> : <Fragment />}
         </div>
 
         <div className="list-projecttiles" aria-live="polite">
