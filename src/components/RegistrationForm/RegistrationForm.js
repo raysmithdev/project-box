@@ -1,6 +1,6 @@
-import AuthApiService from "../../services/auth-api-service";
 import React, { Component, Fragment } from "react";
 import TokenService from "../../services/token-service";
+import AuthApiService from "../../services/auth-api-service";
 import ProjectContext from "../../Context/ProjectContext";
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator";
 import("./RegistrationForm.css");

@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
-import ProjectTile from "../../components/ProjectTile/ProjectTile";
-import "./Dashboard.css";
-import ProjectContext from "../../Context/ProjectContext";
 import ProjectsApiService from "../../services/project-api-service";
+import ProjectContext from "../../Context/ProjectContext";
+import ProjectTile from "../../components/ProjectTile/ProjectTile";
 import LoadingIndicator from '../../components/LoadingIndicator/LoadingIndicator'
+import "./Dashboard.css";
 
 class Dashboard extends React.Component {
   static contextType = ProjectContext;
