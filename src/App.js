@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
+import ProjectContext from "./Context/ProjectContext";
+import ProjectsApiService from "./services/project-api-service";
 import Nav from "./components/Navigation/Nav";
 import NotFound from "./routes/NotFound/NotFound";
 import LandingPage from "./routes/LandingPage/LandingPage";
@@ -9,8 +11,6 @@ import ViewProject from "./routes/ViewProject/ViewProject";
 import New from "./routes/New/New";
 import Edit from "./routes/Edit/Edit";
 import "./App.css";
-import ProjectContext from "./Context/ProjectContext";
-import ProjectsApiService from "./services/project-api-service";
 
 class App extends Component {
   static defaultProps = {
