@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, nextProps } from "react";
 import ProjectsApiService from "../../services/project-api-service";
 import ProjectContext from "../../Context/ProjectContext";
 import ProjectTile from "../../components/ProjectTile/ProjectTile";
@@ -26,7 +26,7 @@ class Dashboard extends React.Component {
       .then(this.setState({ isLoading: false }))
       .catch(this.context.setError);
   }
-
+  
   handleSwitch = () => {
     this.setState({
       isChecked: !this.state.isChecked,
@@ -43,7 +43,7 @@ class Dashboard extends React.Component {
     const query = this.state.query;
     if (query.length >= 1) {
       const results = this.context.projectList.filter(project =>
-        project.title.includes(`${query}`)
+        project.title.toLowerCase().trim() === `${query}`.toLowerCase().trim()
       );
       this.setState({ results });
     } else {
