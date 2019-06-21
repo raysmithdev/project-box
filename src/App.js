@@ -81,8 +81,8 @@ class App extends Component {
   };
 
   deleteProject = projectId => {
-    ProjectsApiService.deleteProject(projectId);
-    this.props.history.push("/dashboard");
+    ProjectsApiService.deleteProject(projectId)
+    .then(() => this.props.history.push("/dashboard"))
   };
 
   redirectToLogin = () => {
