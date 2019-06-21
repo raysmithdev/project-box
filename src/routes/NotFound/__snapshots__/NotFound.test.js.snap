@@ -2,7 +2,9 @@
 
 exports[`NotFound component renders without crashing 1`] = `
 <div>
-  <p>
+  <p
+    className="not-found"
+  >
     Page Not Found
   </p>
 </div>
