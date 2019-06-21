@@ -42,3 +42,11 @@ section .large-text {
 .landingpage-container section {
   margin-bottom: 100px;
 }
+
+/* DESKTOP */
+@media only screen and (min-width: 1024px) {
+  .img {
+    width: 1280px;
+    height: 548px;
+  }
+}
