@@ -1,4 +1,4 @@
-import React, { Fragment, nextProps } from "react";
+import React, { Fragment } from "react";
 import ProjectsApiService from "../../services/project-api-service";
 import ProjectContext from "../../Context/ProjectContext";
 import ProjectTile from "../../components/ProjectTile/ProjectTile";

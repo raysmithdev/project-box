@@ -27,13 +27,18 @@
     text-transform: uppercase;
 }
 
-.tile-img {
+.tile-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
     background: darkviolet;
     height: 250px;
     width: 275px;
     border-radius: 10px 10px 0 0;
     background-size: cover;
-    text-align: center;
+}
+
+.tile-img {
+    font-size: 100px;
     margin: 0;
-    /* background-position: 50% 50%; */
 }

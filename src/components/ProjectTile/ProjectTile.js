@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 function ProjectTile(props) {
   return (
     <Link to={`/project/${props.project.id}`} className="tile">
-      {/* <p className="tile-img">[placeholder image]</p> */}
-      <img src={props.project.img} alt="" className="tile-img"/>
+      <div className="tile-container">
+        <p className="tile-img">{props.project.title.charAt(0).toUpperCase()}</p>
+      </div>
       <h3 className="tile-title">{props.project.title}</h3>
     </Link>
   );
