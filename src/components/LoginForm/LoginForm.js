@@ -66,6 +66,7 @@ class LoginForm extends Component {
                   type="password"
                   name="password"
                   id="password"
+                  placeholder="Password..."
                   aria-required="true"
                   required
                 />

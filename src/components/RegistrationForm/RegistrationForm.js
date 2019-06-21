@@ -59,10 +59,10 @@ class RegistrationForm extends Component {
             <div>
               <label htmlFor="username">Username</label>
               <input
-                placeholder="Username..."
                 type="text"
                 name="username"
                 id="username"
+                placeholder="Username..."
                 aria-required="true"
                 required
               />
@@ -73,6 +73,7 @@ class RegistrationForm extends Component {
                 type="password"
                 name="password"
                 id="password"
+                placeholder="Password..."
                 aria-required="true"
                 required
               />
